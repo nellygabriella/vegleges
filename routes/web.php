@@ -11,6 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middlewire'=>['web']], function(){
+
+    Route::get('/', 'PagesController@getIndex');
+    Route::get('/kapcsolat', 'PagesController@getContact');
+    Route::post('/kapcsolat','PagesController@postContact');
+
+    Route::get('hirek/{slug}', ['as'=>'post.single', 'uses'=>'PostController@getSingle']);
+
+    Route::resource('news', 'NewsController');
+    Route::resource('tags','TagController',['except'=>['create']]);
+    Route::post('comments/{news_id}', ['uses' => 'CommentsController@store', 'as'=>'comments.store']);
+    Route::delete('comments/{id}',['uses'=>'CommentsController@destroy', 'as' => 'comments.destroy']);
+    Route::get('comments/{id}/delete',['uses'=>'CommentsController@delete', 'as'=>'comments.delete']);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
