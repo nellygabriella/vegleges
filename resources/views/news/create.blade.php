@@ -3,12 +3,6 @@
 @section('stylesheets')
     {!!Html::style('css/parsley.css')!!}
     {!!Html::style('css/select2.min.css')!!}
-    
-    {!!Html::style('css/partials/nav.css')!!}
-    {!!Html::style('css/partials/footer.css')!!}
-    
-    {!!Html::style('css/layouts/news.css')!!}
-    
     <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
 
     <script>
@@ -17,7 +11,6 @@
             plugins: 'code image link'
         });
     </script>
-
 @endsection
 
     <body>
