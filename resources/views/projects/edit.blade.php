@@ -26,7 +26,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Módosítás</h4>
-                            {!!Form::model($news,['route'=>['news.update',$news->id],'method'=>'PUT', 'files' =>true])!!}
+                            {!!Form::model($project,['route'=>['projects.update',$project->id],'method'=>'PUT', 'files' =>true])!!}
 
                             <div class="form-group">
                                 {{Form::label('title','Tile:')}}
@@ -65,14 +65,14 @@
                             <tbody>
                             <tr>
                                 <td>Készült: </td>
-                                <td>{{date('Y, M j',strtotime($news->created_at))}}</td>
+                                <td>{{date('Y, M j',strtotime($project->created_at))}}</td>
                             </tr>
                             <tr>
                                 <td>Módositva: </td>
-                                <td>{{date('Y, M j',strtotime($news->updated_at))}}</td>
+                                <td>{{date('Y, M j',strtotime($project->updated_at))}}</td>
                             </tr>
                             <tr>
-                                <td>{!!Html::linkRoute('news.show', 'Mégse', array($news->id),array('class'=>'btn btn-primary btn-fw'))!!}</td>
+                                <td>{!!Html::linkRoute('projects.show', 'Mégse', array($project->id),array('class'=>'btn btn-primary btn-fw'))!!}</td>
                                 <td>{{Form::submit('Mentés',['class'=>'btn btn-success btn-fw'])}}</td>
                             </tr>
                             
@@ -96,7 +96,7 @@
 
 <script type="text/javascript">
     $('.select2-multi').select2();
-    $('.select2-multi').select2().val({!! json_encode($news->tags()->allRelatedIds())!!}).trigger('change');
+    $('.select2-multi').select2().val({!! json_encode($project->tags()->allRelatedIds())!!}).trigger('change');
 </script>
 
 

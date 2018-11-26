@@ -27,7 +27,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Új post</h4>
 				  
-					{!! Form::open(array('route' => 'news.store','data-parsley-validate' => '', 'files'=>true)) !!}
+					{!! Form::open(array('route' => 'projects.store','data-parsley-validate' => '', 'files'=>true)) !!}
 
 						<div class="form-group">
 							{{Form::label('title', 'Cím: ')}}
@@ -40,7 +40,7 @@
 						</div>
 						
 						<div class="form-group">
-						{{ Form::label('tags', 'Tags:') }}
+						{{ Form::label('tags', 'Tagek:') }}
 						<select class="select-multi form-control" name="tags[]" multiple="multiple">
 							@foreach($tags as $tag)
 								<option value='{{ $tag->id }}'>{{ $tag->name }}</option>
@@ -58,7 +58,7 @@
 							{{Form::textarea('body',null,array('class'=>'form-control','required'=>''))}}
 						</div>
 
-						{{Form::submit('Create Post', array('class'=>'btn btn-success btn-lg btn'))}}
+						{{Form::submit('Mentés', array('class'=>'btn btn-success btn-lg btn'))}}
 
 					{!! Form::close() !!}
 				</div>

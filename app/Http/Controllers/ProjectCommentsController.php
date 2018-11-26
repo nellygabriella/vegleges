@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\News;
-use App\Comment;
+use App\Project;
+use App\ProjectsComment;
 use Session;
 
-class CommentsController extends Controller
+class ProjectCommentsController extends Controller
 {
+
+    
+
     /**
      * Display a listing of the resource.
      *
@@ -35,24 +38,24 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $news_id)
+    public function store(Request $request, $project_id)
     {
         $this->validate($request, array(
             'comment' => 'required|max:2000'
         ));
 
-        $news = News::find($news_id);
+        $project = Project::find($project_id);
 
-        $comment= new Comment();
+        $comment= new ProjectsComment();
         $comment->comment = $request->comment;
         $comment->approved=true;
-        $comment->news()->associate($news);
+        $comment->project()->associate($project);
 
         $comment->save();
 
         Session::flash('success', 'Komment hozzáadva');
 
-        return redirect()->route('post.single', [$news->slug]);
+        return redirect()->route('post.single', [$project->slug]);
     }
 
     /**
@@ -91,7 +94,7 @@ class CommentsController extends Controller
 
     public function delete($id)
     {
-        $comment = Comment::find($id);
+        $comment = ProjectsComment::find($id);
         return view('comments.delete')->withComment($comment);
     }
 
@@ -103,12 +106,12 @@ class CommentsController extends Controller
      */
     public function destroy($id)
     {
-        $comment = Comment::find($id);
-        $news_id = $comment->news->id;
+        $comment = ProjectsComment::find($id);
+        $project_id = $comment->project->id;
         $comment->delete();
 
         Session::flash('success', 'Deleted Comment');
 
-        return redirect()->route('news.show', $news_id);
+        return redirect()->route('projects.show', $project_id);
     }
 }

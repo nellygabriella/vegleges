@@ -24,6 +24,10 @@ Route::group(['middlewire'=>['web']], function(){
     Route::post('comments/{news_id}', ['uses' => 'CommentsController@store', 'as'=>'comments.store']);
     Route::delete('comments/{id}',['uses'=>'CommentsController@destroy', 'as' => 'comments.destroy']);
     Route::get('comments/{id}/delete',['uses'=>'CommentsController@delete', 'as'=>'comments.delete']);
+
+    Route::resource('projects', 'ProjectsController');
+    
+
 });
 
 Auth::routes();

@@ -7,7 +7,7 @@
             <li class="nav-item nav-category">
               <span class="nav-link">Hirek</span>
             </li>
-			 <li class="nav-item">
+			      <li class="nav-item">
               <a class="nav-link" href="{{ route('news.index') }}">
                 <span class="menu-title">Híreim</span>
                 <i class="icon-speedometer menu-icon"></i>
@@ -38,28 +38,13 @@
               <span class="nav-link">Projektek</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('news.index') }}">
+              <a class="nav-link" href="{{ route('projects.index') }}">
                 <span class="menu-title">Projekteim</span>
                 <i class="icon-speedometer menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('news.create') }}">
-                <span class="menu-title">Szerkesztés</span>
-                <i class="icon-speedometer menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item nav-category">
-              <span class="nav-link">Jegyzetek</span>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('news.index') }}">
-                <span class="menu-title">Jegyzeteim</span>
-                <i class="icon-speedometer menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('news.create') }}">
+              <a class="nav-link" href="{{ route('projects.create') }}">
                 <span class="menu-title">Szerkesztés</span>
                 <i class="icon-speedometer menu-icon"></i>
               </a>

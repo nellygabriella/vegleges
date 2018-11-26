@@ -16,16 +16,16 @@
                 <div class="card-body">
                     <h4 class="card-title">A kész szöveg</h4>
                         <div id="summernoteExample">
-                            <h4>{{ $news->title }}</h4>
+                            <h4>{{ $projects ->title }}</h4>
                             <hr>
-                            <img src="{{asset('images/'.$news->image)}}" alt="Akép nem jeleníthető meg" width="100%"/>
+                            <img src="{{asset('images/'.$projects->image)}}" alt="Akép nem jeleníthető meg" width="100%"/>
                             <hr>
                             <div class="text-justify">
-                                {!!$news->body!!}
+                                {!!$projects->body!!}
                             </div>
                             <hr>
                             <div class="tags">
-                                @foreach ($news->tags as $tag)
+                                @foreach ($projects->tags as $tag)
                                     <label class="badge badge-warning">{{ $tag->name }}</label>
                                 @endforeach
                             </div>
@@ -36,7 +36,7 @@
             <div class="col-lg-8 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h2><small>{{ $news->comments()->count() }} hozzászólás</small></h2>
+                        <h2><small>{{ $projects->projectcomments()->count() }} hozzászólás</small></h2>
 
                         <table id="order-listing" class="table" cellspacing="0">
                             <thead>
@@ -46,7 +46,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($news->comments as $comment)
+                                @foreach ($project->comments as $comment)
                                     <tr>
                                         <td>{{ $comment->comment }}</td>
                                         <td><a href="{{ route('comments.delete', $comment->id) }}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></a></td>
@@ -63,28 +63,28 @@
 
                         <dl class="dl-horizontal">
                             <dt>URL: </dt>
-                            <dd><a href="{{ route('post.single', $news->slug) }}">{{ route('post.single', $news->slug) }}</a></dd>
+                            <dd><a href="{{ route('post.single', $projects->slug) }}">{{ route('post.single', $projects->slug) }}</a></dd>
                         </dl>
 
                         <dl class="dl-horizontal">
                             <dt>Készült: </dt>
-                            <dd>{{date('Y, M j',strtotime($news->created_at))}}</dd>
+                            <dd>{{date('Y, M j',strtotime($projects->created_at))}}</dd>
                         </dl>
 
                         <dl class="dl-horizontal">
                             <dt>Módositva: </dt>
-                            <dd>{{date('Y, M j',strtotime($news->updated_at))}}</dd>
+                            <dd>{{date('Y, M j',strtotime($projects->updated_at))}}</dd>
                         </dl>
 
                         <hr>
 
                         <div class="row">
                             <div class="col-sm-6">
-                                {!!Html::linkRoute('news.edit', 'Szerkeszt', array($news->id),array('class'=>'btn btn-secondary btn-fw'))!!}
+                                {!!Html::linkRoute('projects.edit', 'Szerkeszt', array($projects->id),array('class'=>'btn btn-secondary btn-fw'))!!}
                             </div>
                             <div class="col-sm-6">
         
-                                {!! Form::open(['route'=>['news.destroy',$news->id],'method' => 'DELETE']) !!}
+                                {!! Form::open(['route'=>['projects.destroy',$projects->id],'method' => 'DELETE']) !!}
         
                                 {!! Form::submit('Törlés',['class'=>'btn btn-info btn-fw']) !!}
         

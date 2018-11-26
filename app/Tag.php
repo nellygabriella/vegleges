@@ -10,4 +10,9 @@ class Tag extends Model
     {
         return $this->belongsToMany('App\News');
     }
+
+    public function project()
+    {
+        return $this->belongsToMany('App\Project');
+    }
 }
