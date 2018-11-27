@@ -16,16 +16,15 @@
                 <div class="card-body">
                     <h4 class="card-title">A kész szöveg</h4>
                         <div id="summernoteExample">
-                            <h4>{{ $questions ->title }}</h4>
-                            <hr>
-                            <img src="{{asset('images/'.$questions->image)}}" alt="Akép nem jeleníthető meg" width="100%"/>
+                            <h4>{{ $question ->question }}</h4>
+                            
                             <hr>
                             <div class="text-justify">
-                                {!!$questions->body!!}
+                                {!!$question->body!!}
                             </div>
                             <hr>
                             <div class="tags">
-                                @foreach ($questions->tags as $tag)
+                                @foreach ($question->tags as $tag)
                                     <label class="badge badge-warning">{{ $tag->name }}</label>
                                 @endforeach
                             </div>
@@ -41,28 +40,28 @@
 
                         <dl class="dl-horizontal">
                             <dt>URL: </dt>
-                            <dd><a href="{{ route('post.single', $questions->slug) }}">{{ route('post.single', $questions->slug) }}</a></dd>
+                            <dd><a href="{{ route('post.single', $question->slug) }}">{{ route('post.single', $question->slug) }}</a></dd>
                         </dl>
 
                         <dl class="dl-horizontal">
                             <dt>Készült: </dt>
-                            <dd>{{date('Y, M j',strtotime($questions->created_at))}}</dd>
+                            <dd>{{date('Y, M j',strtotime($question->created_at))}}</dd>
                         </dl>
 
                         <dl class="dl-horizontal">
                             <dt>Módositva: </dt>
-                            <dd>{{date('Y, M j',strtotime($questions->updated_at))}}</dd>
+                            <dd>{{date('Y, M j',strtotime($question->updated_at))}}</dd>
                         </dl>
 
                         <hr>
 
                         <div class="row">
                             <div class="col-sm-6">
-                                {!!Html::linkRoute('questions.edit', 'Szerkeszt', array($questions->id),array('class'=>'btn btn-secondary btn-fw'))!!}
+                                {!!Html::linkRoute('questions.edit', 'Szerkeszt', array($question->id),array('class'=>'btn btn-secondary btn-fw'))!!}
                             </div>
                             <div class="col-sm-6">
         
-                                {!! Form::open(['route'=>['questions.destroy',$questions->id],'method' => 'DELETE']) !!}
+                                {!! Form::open(['route'=>['questions.destroy',$question->id],'method' => 'DELETE']) !!}
         
                                 {!! Form::submit('Törlés',['class'=>'btn btn-info btn-fw']) !!}
         

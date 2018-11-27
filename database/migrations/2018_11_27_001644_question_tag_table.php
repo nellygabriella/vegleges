@@ -13,12 +13,14 @@ class QuestionTagTable extends Migration
      */
     public function up()
     {
-        $table->increments('id');
+        Schema::create('question_tag', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('question_id')->unsigned();
             $table->foreign('question_id')->references('id')->on('questions');
 
             $table->integer('tag_id')->unsigned();
             $table->foreign('tag_id')->references('id')->on('tags');
+        });
     }
 
     /**

@@ -30,8 +30,8 @@
 					{!! Form::open(array('route' => 'questions.store','data-parsley-validate' => '', 'files'=>true)) !!}
 
 						<div class="form-group">
-							{{Form::label('title', 'Cím: ')}}
-							{{Form::text('title', null, array('class'=>'form-control', 'required'=>'', 'maxlength'=>'255'))}}
+							{{Form::label('question', 'Cím: ')}}
+							{{Form::text('question', null, array('class'=>'form-control', 'required'=>'', 'maxlength'=>'5000'))}}
 						</div>
 
 						<div class="form-group">

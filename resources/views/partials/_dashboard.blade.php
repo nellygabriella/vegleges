@@ -68,13 +68,13 @@
               <span class="nav-link">Kérdések</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('news.index') }}">
+              <a class="nav-link" href="{{ route('questions.index') }}">
                 <span class="menu-title">Kérdéseim</span>
                 <i class="icon-speedometer menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('news.create') }}">
+              <a class="nav-link" href="{{ route('questions.create') }}">
                 <span class="menu-title">Szerkesztés</span>
                 <i class="icon-speedometer menu-icon"></i>
               </a>

@@ -29,8 +29,8 @@
                             {!!Form::model($question,['route'=>['questions.update',$question->id],'method'=>'PUT', 'files' =>true])!!}
 
                             <div class="form-group">
-                                {{Form::label('title','Tile:')}}
-                                {{Form::text('title',null,["class"=>'form-control input-lg'])}}
+                                {{Form::label('question','Tile:')}}
+                                {{Form::text('question',null,["class"=>'form-control input-lg'])}}
                             </div>
 
                             <div class="form-group">

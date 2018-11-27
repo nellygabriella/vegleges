@@ -106,6 +106,7 @@ class TagController extends Controller
         $tag->news()->detach();
         $tag->porject()->detach();
         $tag->job()->detach();
+        $tag->question()->detach();
 
         $tag->delete();
 

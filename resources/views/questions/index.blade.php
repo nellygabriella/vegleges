@@ -7,7 +7,7 @@
   <div class="content-wrapper">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Hírek</h4>
+              <h4 class="card-title">Kérdések</h4>
               <div class="row">
                 <div class="col-12">
                   <table id="order-listing" class="table" cellspacing="0">
@@ -27,7 +27,7 @@
 					  @foreach($questions as $question)
                       <tr>
                           <td>{{ $question->id }}</td>
-                          <td>{{ $question->title }}</td>
+                          <td>{{ $question->question }}</td>
                           <td>{{ substr(strip_tags($question->body), 0, 50) }}{{ strlen(strip_tags($question->body)) > 50 ? "..." : "" }}</td>
                           <td>{{ date('Y, M j', strtotime($question->created_at)) }}</td>
                           <td>{{ date('Y, M j', strtotime($question->updated_at)) }}</td>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Question;
+use App\Tag;
+use Session;
 
 class QuestionsController extends Controller
 {
@@ -38,14 +41,13 @@ class QuestionsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,array(
-            'title'=>'required|max:255',
+            'question'=>'required|max:5000',
             'slug'=>'required|alpha_dash|min:5|max:255|unique:questions,slug',
             'body'=>'required',
-            'featured_image' => 'sometimes|image'
         ));
 
         $question = new Question;
-        $question->title=$request->title;
+        $question->question=$request->question;
         $question->slug=$request->slug;
         $question->body=$request->body;
 
@@ -103,13 +105,13 @@ class QuestionsController extends Controller
 
         if($request->input('slug')== $question->slug){
             $this->validate($request, array(
-                'title' => 'required|max:255',
+                'question' => 'required|max:5000',
                 'body' => 'required'
             ));
         }else{
         
             $this -> validate($request, array(
-                'title'=>'required|max:255',
+                'question'=>'required|max:5000',
                 'slug'=>'required|alpha_dash|min:5|max:255|unique:questions,slug'.$id,
                 'body'=>'required'
             ));
@@ -117,7 +119,7 @@ class QuestionsController extends Controller
 
         $question=Question::find($id);
         
-        $question->title=$request->input('title');
+        $question->question=$request->input('question');
         $question->slug=$request->input('slug');
         $question->body=$request->input('body');
 
@@ -146,7 +148,7 @@ class QuestionsController extends Controller
     {
         $question = Question::find($id);
         $question->tags()->detach();
-        Storage::delete($question->image);
+        
 
         $question -> delete();
 

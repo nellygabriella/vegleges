@@ -26,7 +26,7 @@ class AddSlugToQuestions extends Migration
     public function down()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->dropColumn('slug')
+            $table->dropColumn('slug');
         });
     }
 }
