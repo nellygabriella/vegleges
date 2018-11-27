@@ -23,7 +23,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects= Project::orderBy('id', 'desc')->paginate(10);
+        $projects= Project::orderBy('id', 'desc')->paginate(5);
         return view('projects.index')->withProjects($projects);
     }
 
@@ -87,7 +87,7 @@ class ProjectsController extends Controller
     public function show($id)
     {
         $project=Project::find($id);
-        return view('projects.show')->withProjects($project);
+        return view('projects.show')->withProject($project);
     }
 
     /**

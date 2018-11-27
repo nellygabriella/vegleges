@@ -104,7 +104,8 @@ class TagController extends Controller
     {
         $tag = Tag::find($id);
         $tag->news()->detach();
-        $tag->porject()->detch();
+        $tag->porject()->detach();
+        $tag->job()->detach();
 
         $tag->delete();
 

@@ -15,4 +15,14 @@ class Tag extends Model
     {
         return $this->belongsToMany('App\Project');
     }
+
+    public function job()
+    {
+        return $this->belongsToMany('App\Job');
+    }
+
+    public function question()
+    {
+        return $this->belongsToMany('App\Question');
+    }
 }

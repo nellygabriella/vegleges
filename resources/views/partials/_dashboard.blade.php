@@ -23,13 +23,13 @@
               <span class="nav-link">Jegyzetek</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('news.index') }}">
+              <a class="nav-link" href="{{ route('notes.index') }}">
                 <span class="menu-title">Jegyzeteim</span>
                 <i class="icon-speedometer menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('news.create') }}">
+              <a class="nav-link" href="{{ route('notes.create') }}">
                 <span class="menu-title">Szerkesztés</span>
                 <i class="icon-speedometer menu-icon"></i>
               </a>
@@ -50,16 +50,16 @@
               </a>
             </li>
             <li class="nav-item nav-category">
-              <span class="nav-link">Munka</span>
+              <span class="nav-link">Állás</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('news.index') }}">
+              <a class="nav-link" href="{{ route('jobs.index') }}">
                 <span class="menu-title">Felhivások</span>
                 <i class="icon-speedometer menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('news.create') }}">
+              <a class="nav-link" href="{{ route('jobs.create') }}">
                 <span class="menu-title">Szerkesztés</span>
                 <i class="icon-speedometer menu-icon"></i>
               </a>

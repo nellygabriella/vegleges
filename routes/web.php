@@ -26,7 +26,13 @@ Route::group(['middlewire'=>['web']], function(){
     Route::get('comments/{id}/delete',['uses'=>'CommentsController@delete', 'as'=>'comments.delete']);
 
     Route::resource('projects', 'ProjectsController');
+
+    Route::resource('jobs', 'JobsController');
     
+    Route::resource('notes','NotesController');
+
+    Route::resource('questions', 'QuestionsController');
+
 
 });
 

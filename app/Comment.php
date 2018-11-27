@@ -10,8 +10,5 @@ class Comment extends Model
         return $this->belongsTo('App\News');
     }
 
-    public function project(){
-        return $this->belongsTo('App\Project');
-    }
     
 }
