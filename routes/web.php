@@ -18,6 +18,7 @@ Route::group(['middlewire'=>['web']], function(){
     Route::post('/kapcsolat','PagesController@postContact');
 
     Route::get('hirek/{slug}', ['as'=>'post.single', 'uses'=>'PostController@getSingle']);
+    Route::get('forum/{slug}', ['as'=>'post.single', 'uses'=>'PostController@getSingle']);
 
     Route::resource('news', 'NewsController');
     Route::resource('tags','TagController',['except'=>['create']]);

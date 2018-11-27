@@ -3,7 +3,7 @@
 @section('title','| Welcome')
 
 @section('stylesheets')
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('/') }}/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('/') }}/css/main.css" />
 @endsection
 
         <div class="home">
