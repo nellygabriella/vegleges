@@ -11,9 +11,14 @@
 
 
 
-  <tr>
-       <td>{!! link_to( route('notes.get_file', $note->filename) . '/' . $note->filename, $note->filename) !!} </td>
-  </tr>
+<div class="col-md-2">
+    <div class="thumbnail">
+        
+        <div class="caption">
+            <p>{{$note->original_filename}}</p>
+        </div>
+    </div>
+</div>
 
       
 

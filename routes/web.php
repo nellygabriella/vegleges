@@ -19,9 +19,15 @@ Route::group(['middlewire'=>['web']], function(){
 
     Route::get('hirek/{slug}', ['as'=>'post.newssingle', 'uses'=>'PostController@getNewsSingle']);
     Route::get('hirek', ['uses' => 'PostController@getNewsIndex', 'as' => 'post.newsindex']);
+
     Route::get('forum/{slug}', ['as'=>'post.forumsingle', 'uses'=>'PostController@getQuestionSingle']);
     Route::get('forum', ['uses' => 'PostController@getQuestionIndex', 'as' => 'post.forumindex']);
+
     Route::get('jegyzetek/{slug}', ['as'=>'post.notessingle', 'uses'=>'PostController@getNotesSingle']);
+
+    Route::get('projektek/{slug}', ['as'=>'post.projectsingle', 'uses'=>'PostController@getProjectSingle']);
+
+    Route::get('allas/{slug}', ['as'=>'post.jobsingle', 'uses'=>'PostController@getJobSingle']);
 
     /*Route::get('/{question_id}', function($question_id){
  

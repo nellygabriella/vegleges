@@ -48,7 +48,7 @@ class NotesController extends Controller
 
         $file=$request->file('filefield');
         $extension = $file->getClientOriginalExtension();
-        $location = storage_path('files');
+        Storage::disk('local')->put($file->getFilename().'.'.$extension,  File::get($file));
         $note->filemime = $file->getClientMimeType();
         $note->original_filename = $file->getClientOriginalName();
         $note->filename = $file->getFilename().'.'.$extension;
@@ -85,7 +85,7 @@ class NotesController extends Controller
     public function get_file($filename){
     
         $note = Note::where('filename', '=', $filename)->firstOrFail();
-        $file = storage_path('files')->get($note->filename);
+        $file = Storage::disk('local')->get($note->filename);
 
         return (new Response($file, 200))
               ->header('Content-Type', $note->mime);

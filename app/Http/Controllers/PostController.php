@@ -12,6 +12,21 @@ use App\Note;
 class PostController extends Controller
 {
 
+    public function getNewsIndex() {
+        $news = News::paginate(5);
+		return view('post.newsindex')->withPosts($news);
+	}
+    
+    public function getNewsSingle($slug){
+        $news = News::where('slug','=',$slug)->first();
+
+        return view('post.newssingle')->withNews($news);
+    }
+    
+    
+    
+    
+    
     public function getQuestionSingle($slug){
         $question = Question::where('slug','=',$slug)->first();
 
