@@ -44,11 +44,6 @@
                             </div>
 
                             <div class="form-group">
-                                {{ Form::label('featured_image', 'Kép cseréje:', ['class' => 'form-spacing-top']) }}
-                                {{ Form::file('featured_image')}}
-                            </div>
-
-                            <div class="form-group">
                                 {{Form::label('body',"Body",['class'=>'form-spacing-top'])}}
                                 {{Form::textarea('body',null,['class'=>'form-control'])}}
                             </div>

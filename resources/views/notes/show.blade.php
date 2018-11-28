@@ -36,7 +36,7 @@
 
                         <dl class="dl-horizontal">
                             <dt>URL: </dt>
-                            <dd><a href="{{ route('post.single', $note->slug) }}">{{ route('post.single', $note->slug) }}</a></dd>
+                            <dd><a href="{{ route('post.notessingle', $note->slug) }}">{{ route('post.notessingle', $note->slug) }}</a></dd>
                         </dl>
 
                         <dl class="dl-horizontal">

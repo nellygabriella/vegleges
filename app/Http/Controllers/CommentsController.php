@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\News;
+use App\User;
+use App\VoteComment;
+use App\SpamComment;
 use App\Comment;
-use Session;
+use App\Post;
+use Auth;
 
 class CommentsController extends Controller
 {
@@ -14,20 +17,56 @@ class CommentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($question_id)
     {
-        //
+        $comments = Comment::where('page_id',$question_id)->get();
+		$commentsData = [];
+		foreach ($comments as $key) {
+			$user = User::find($key->users_id);
+			$name = $user->name;
+			$replies = $this->replies($key->id);
+			$reply = 0;
+			$vote = 0;
+			$voteStatus = 0;
+
+			if(Auth::user()) {
+				$voteByUser = VoteComment::where('comment_id',$key->id)->where('user_id',Auth::user()->id)->first();
+				if($voteByUser) {
+					$vote = 1;
+					$voteStatus = $voteByUser->vote;
+				}
+		   	}
+		   	if(sizeof($replies) > 0) {
+		       	$reply = 1;
+		   	}
+	   	}
+	   	$collection = collect($commentsData);
+	   	return $collection->sortBy('votes');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    protected function replies($comment_id)
+   	{
+       	$comments = Comment::where('reply_id',$comment_id)->get();
+       	$replies = [];
+       	foreach ($comments as $key) {
+           	$user = User::find($key->users_id);
+           	$name = $user->name;
+           	$vote = 0;
+           	$voteStatus = 0;     
+ 
+           	if(Auth::user()) {
+               	$voteByUser = VoteComment::where('comment_id',$key->id)->where('user_id',Auth::user()->id)->first();
+               	$spamComment = SpamComment::where('comment_id',$key->id)->where('user_id',Auth::user()->id)->first();
+               	if($voteByUser) {
+                   	$vote = 1;
+                   	$voteStatus = $voteByUser->vote;
+               	}
+           	}
+            }
+               
+       	$collection = collect($replies);
+       	return $collection->sortBy('votes');
+   	}
 
     /**
      * Store a newly created resource in storage.
@@ -35,47 +74,24 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $news_id)
+    public function store(Request $request,$question_id)
     {
-        $this->validate($request, array(
-            'comment' => 'required|max:2000'
-        ));
+        $this->validate($request, [
+            'comment' => 'required',
+            'reply_id' => 'filled',
+            'question_id' => 'filled',
+            'users_id' => 'required',
+        ]);
 
-        $news = News::find($news_id);
+        $question = Question::find($question_id);
+        $comment = Comment::create($request->all());
+        $comment->question()->associate($question);
 
-        $comment= new Comment();
-        $comment->comment = $request->comment;
-        $comment->approved=true;
-        $comment->news()->associate($news);
-
-        $comment->save();
-
-        Session::flash('success', 'Komment hozzáadva');
-
-        return redirect()->route('post.single', [$news->slug]);
+        if($comment)
+        return redirect()->route('post.forumsingle', [$question->slug]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.
@@ -84,31 +100,44 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $comment_id, $type)
     {
-        //
+        if($type == "vote"){
+            $this->validate($request, [
+                'vote' => 'required',
+                'users_id' => 'required',
+            ]);
+
+            $comments = Comment::find($comment_id);
+
+            $data = [
+                "comment_id" => $comment_id,
+                'vote' => $request->vote,
+                'user_id' => $request->users_id,
+            ];
+
+            if($request->vote == "up"){
+                $comment = $comments->first();
+                $vote = $comment->votes;
+                $vote++;
+                $comments->votes = $vote;
+                $comments->save();
+            }
+
+            if($request->vote == "down"){
+                $comment = $comments->first();
+                $vote = $comment->votes;
+                $vote--;
+                $comments->votes = $vote;
+                $comments->save();
+            }
+
+            if(VoteComment::create($data))
+            return "true";
+        }
+
+        view('comments.edit');
     }
 
-    public function delete($id)
-    {
-        $comment = Comment::find($id);
-        return view('comments.delete')->withComment($comment);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $comment = Comment::find($id);
-        $news_id = $comment->news->id;
-        $comment->delete();
-
-        Session::flash('success', 'Deleted Comment');
-
-        return redirect()->route('news.show', $news_id);
-    }
+    
 }

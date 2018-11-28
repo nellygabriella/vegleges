@@ -6,9 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    public function news(){
-        return $this->belongsTo('App\News');
-    }
+    protected $fillable = ['comment','votes','reply_id','slug_id','users_id'];
 
-    
+    protected $dates = ['created_at', 'updated_at'];
+ 
+  	public function replies()
+   	{
+       return $this->hasMany('App\Comment','id','reply_id');
+    }
+       
+    public function question()
+    {
+    	return $this->belongsTo('App\Question');
+    }
 }

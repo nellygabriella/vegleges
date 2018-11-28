@@ -40,7 +40,7 @@
 
                         <dl class="dl-horizontal">
                             <dt>URL: </dt>
-                            <dd><a href="{{ route('post.single', $question->slug) }}">{{ route('post.single', $question->slug) }}</a></dd>
+                            <dd><a href="{{ route('post.forumsingle', $question->slug) }}">{{ route('post.forumsingle', $question->slug) }}</a></dd>
                         </dl>
 
                         <dl class="dl-horizontal">
