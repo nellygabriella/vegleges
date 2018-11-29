@@ -1,4 +1,4 @@
-@extends('main')
+@extends('app.layouts')
 @section('title', "|$tag->name Tag")
 
 @section('content')

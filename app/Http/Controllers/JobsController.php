@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 use App\Job;
 use App\Tag;
 use Session;
+use Auth;
 
 class JobsController extends Controller
 {
+    
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,8 @@ class JobsController extends Controller
      */
     public function index()
     {
-        $jobs= Job::orderBy('id', 'desc')->paginate(5);
+        $user= Auth::user()->id;
+        $jobs= Job::where('user_id','=',$user)->get();
         return view('jobs.index')->withJobs($jobs);
     }
 
@@ -39,6 +46,8 @@ class JobsController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
+        
         $this->validate($request, array(
             'position' => 'required|max:500',
             'company'=> 'sometimes|max:1000',
@@ -48,6 +57,7 @@ class JobsController extends Controller
         ));
         
         $job = new Job;
+        $job->user_id=$request->user()->id;
         $job->position = $request->position;
         $job->company = $request->company;
         $job->city = $request->city;

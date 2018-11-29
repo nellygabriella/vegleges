@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Tag;
 use Session;
+use Auth;
 
 class QuestionsController extends Controller
 {
+    
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,8 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        $questions= Question::orderBy('id', 'desc')->paginate(5);
+        $user= Auth::user()->id;
+        $questions= Question::where('user_id','=',$user)->get();
         return view('questions.index')->withQuestions($questions);
     }
 
@@ -40,6 +47,8 @@ class QuestionsController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
+        
         $this->validate($request,array(
             'question'=>'required|max:5000',
             'slug'=>'required|alpha_dash|min:5|max:255|unique:questions,slug',
@@ -47,6 +56,7 @@ class QuestionsController extends Controller
         ));
 
         $question = new Question;
+        $question->user_id=$request->user()->id;
         $question->question=$request->question;
         $question->slug=$request->slug;
         $question->body=$request->body;

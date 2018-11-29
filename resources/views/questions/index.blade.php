@@ -28,7 +28,7 @@
                       <tr>
                           <td>{{ $question->id }}</td>
                           <td>{{ $question->question }}</td>
-                          <td>{{ substr(strip_tags($question->body), 0, 50) }}{{ strlen(strip_tags($question->body)) > 50 ? "..." : "" }}</td>
+                          <td>{!! substr(strip_tags($question->body), 0, 50) !!}{!! strlen(strip_tags($question->body)) > 50 ? "..." : "" !!}</td>
                           <td>{{ date('Y, M j', strtotime($question->created_at)) }}</td>
                           <td>{{ date('Y, M j', strtotime($question->updated_at)) }}</td>
                           <td>

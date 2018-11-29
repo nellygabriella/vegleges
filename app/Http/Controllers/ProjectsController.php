@@ -8,6 +8,8 @@ use App\Tag;
 use Session;
 use Image;
 use Storage;
+use Auth;
+use App\User;
 
 class ProjectsController extends Controller
 {
@@ -23,7 +25,9 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects= Project::orderBy('id', 'desc')->paginate(5);
+        $user= Auth::user()->id;
+        $projects= Project::where('user_id','=',$user)->get();
+        
         return view('projects.index')->withProjects($projects);
     }
 
@@ -47,6 +51,8 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
+        
         $this->validate($request,array(
             'title'=>'required|max:255',
             'slug'=>'required|alpha_dash|min:5|max:255|unique:projects,slug',
@@ -55,6 +61,7 @@ class ProjectsController extends Controller
         ));
 
         $project = new Project;
+        $project->user_id=$request->user()->id;
         $project->title=$request->title;
         $project->slug=$request->slug;
         $project->body=$request->body;

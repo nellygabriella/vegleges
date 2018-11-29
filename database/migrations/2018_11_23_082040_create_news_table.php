@@ -17,7 +17,12 @@ class CreateNewsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('body');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
+        });
+
+        Schema::table('news', function ($table){
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -29,5 +34,6 @@ class CreateNewsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('news');
+        Schema::dropForeign(['user_id']);
     }
 }

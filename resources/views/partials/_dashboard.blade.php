@@ -79,6 +79,15 @@
                 <i class="icon-speedometer menu-icon"></i>
               </a>
             </li>
+            <li class="nav-item nav-category">
+              <span class="nav-link">Tagek</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('tags.index') }}">
+                <span class="menu-title">Szerkesztés</span>
+                <i class="icon-speedometer menu-icon"></i>
+              </a>
+          </li>
 		  </ul>
 		</nav>
 		

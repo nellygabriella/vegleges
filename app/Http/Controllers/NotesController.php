@@ -8,9 +8,15 @@ use App\Note;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
+use Auth;
 
 class NotesController extends Controller
 {
+    
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +24,8 @@ class NotesController extends Controller
      */
     public function index()
     {
-        $notes= Note::orderBy('id', 'desc')->paginate(10);
+        $user= Auth::user()->id;
+        $notes= Note::where('user_id','=',$user)->get();
         return view('notes.index')->withNotes($notes);
     }
 
@@ -41,7 +48,9 @@ class NotesController extends Controller
     public function store(Request $request)
     {
 
+        $user = Auth::user();
         $note = new Note;
+        $note->user_id=$request->user()->id;
         $note->title=$request->title;
         $note->slug=$request->slug;
         $note->body=$request->body;

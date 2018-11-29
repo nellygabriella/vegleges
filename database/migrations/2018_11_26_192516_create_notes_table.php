@@ -19,8 +19,13 @@ class CreateNotesTable extends Migration
             $table->string('filename');
             $table->string('filemime');
             $table->string('original_filename');
+            $table->integer('user_id')->unsigned();
             $table->text('body');
             $table->timestamps();
+        });
+
+        Schema::table('notes', function ($table){
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -32,5 +37,6 @@ class CreateNotesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('notes');
+        Schema::dropForeign(['user_id']);
     }
 }

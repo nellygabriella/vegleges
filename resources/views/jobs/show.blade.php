@@ -41,7 +41,7 @@
 
                         <dl class="dl-horizontal">
                             <dt>URL: </dt>
-                            <dd><a href="{{ route('post.single', $job->slug) }}">{{ route('post.single', $job->slug) }}</a></dd>
+                            <dd><a href="{{ route('post.jobsingle', $job->slug) }}">{{ route('post.jobsingle', $job->slug) }}</a></dd>
                         </dl>
 
                         <dl class="dl-horizontal">

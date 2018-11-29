@@ -8,6 +8,8 @@ use App\Tag;
 use Session;
 use Image;
 use Storage;
+use Auth;
+use App\User;
 
 class NewsController extends Controller
 {
@@ -23,7 +25,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news= News::orderBy('id', 'desc')->paginate(5);
+        $user= Auth::user()->id;
+        $news= News::where('user_id','=',$user)->get();
         return view('news.index')->withNews($news);
     }
 
@@ -47,14 +50,18 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,array(
+        $user = Auth::user();
+
+        $this->validate($request,array( 
             'title'=>'required|max:255',
             'slug'=>'required|alpha_dash|min:5|max:255|unique:news,slug',
             'body'=>'required',
             'featured_image' => 'sometimes|image'
         ));
 
+        
         $news = new News;
+        $news->user_id=$request->user()->id;
         $news->title=$request->title;
         $news->slug=$request->slug;
         $news->body=$request->body;

@@ -17,7 +17,12 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->string('question');
             $table->text('body');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
+        });
+
+        Schema::table('questions', function ($table){
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -29,5 +34,6 @@ class CreateQuestionsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('questions');
+        Schema::dropForeign(['user_id']);
     }
 }

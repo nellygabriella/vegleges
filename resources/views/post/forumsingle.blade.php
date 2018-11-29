@@ -11,7 +11,7 @@
 
 
 
-<comment comment-url="{{$question_id}}"></comment>
+
       
 
 @endsection

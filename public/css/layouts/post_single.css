@@ -389,7 +389,7 @@ section
 	width: 29px;
 	height: 29px;
 }
-.header_side span
+.header_side a
 {
 	display: block;
 	position: relative;
@@ -745,47 +745,47 @@ section
 9. News
 *********************************/
 
-.post
+.news
 {
 	width: 100%;
 	padding-top: 103px;
 	padding-bottom: 118px;
 }
-.post_post
+.news_post
 {
 	
 }
-.post_post:last-child
+.news_post:last-child
 {
 	/*margin-bottom: 0px;*/
 }
-.post_post_image
+.news_post_image
 {
 	width: 100%;
 }
-.post_post_image img
+.news_post_image img
 {
 	width: 100%;
 	height: auto;
 }
-.post_post_top
+.news_post_top
 {
 	margin-top: 38px;
 }
-.post_post_date
+.news_post_date
 {
 	width: 68px;
 	height: 68px;
 	background: #ffb606;
 }
-.post_post_date div:first-child
+.news_post_date div:first-child
 {
 	font-size: 24px;
 	font-weight: 700;
 	color: #FFFFFF;
 	line-height: 1;
 }
-.post_post_date div:last-child
+.news_post_date div:last-child
 {
 	font-size: 14px;
 	font-weight: 500;
@@ -794,45 +794,45 @@ section
 	line-height: 1;
 	margin-top: 3px;
 }
-.post_post_title_container
+.news_post_title_container
 {
 	padding-left: 31px;
 	margin-top: -7px;
 }
-.post_post_title 
+.news_post_title a
 {
 	font-size: 36px;
 	font-weight: 500;
 	line-height: 1.2;
 	color: #1a1a1a;
 }
-.post_post_title a:hover,
-.post_post_author a:hover,
-.post_post_comments a:hover
+.news_post_title a:hover,
+.news_post_author a:hover,
+.news_post_comments a:hover
 {
 	color: #a5a5a5;
 }
-.post_post_meta
+.news_post_meta
 {
 	color: #1a1a1a;
 	margin-top: 5px;
 	padding-left: 2px;
 }
-.post_post_author a
+.news_post_author a
 {
 	font-size: 12px;
 	font-weight: 500;
 	color: #1a1a1a;
 	line-height: 1;
 }
-.post_post_comments a
+.news_post_comments a
 {
 	font-size: 12px;
 	font-weight: 500;
 	color: #1a1a1a;
 	line-height: 1;
 }
-.post_post_meta span:nth-child(2)
+.news_post_meta span:nth-child(2)
 {
 	font-size: 12px;
 	font-weight: 500;
@@ -840,11 +840,11 @@ section
 	margin-left: 5px;
 	margin-right: 5px;
 }
-.post_post_text
+.news_post_text
 {
 	margin-top: 27px;
 }
-.post_post_quote
+.news_post_quote
 {
 	background: #f8f4f4;
 	padding-left: 50px;
@@ -853,7 +853,7 @@ section
 	padding-bottom: 40px;
 	margin-top: 60px;
 }
-.post_post_quote::after
+.news_post_quote::after
 {
 	display: block;
 	position: absolute;
@@ -864,7 +864,7 @@ section
 	background: #ffb606;
 	content: '';
 }
-.post_post_quote_text
+.news_post_quote_text
 {
 	font-size: 18px;
 	font-style: italic;
@@ -872,7 +872,7 @@ section
 	line-height: 32.08px;
 	margin-bottom: 0px;
 }
-.post_post_quote_text span
+.news_post_quote_text span
 {
 	font-size: 36px;
 	color: #ffb606;
@@ -883,7 +883,7 @@ section
 9.1 Comments
 *********************************/
 
-.post_post_comments
+.news_post_comments
 {
 	margin-top: 67px;
 }
