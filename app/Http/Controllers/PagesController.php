@@ -14,6 +14,7 @@ class PagesController extends Controller
         $news=News::orderBy('created_at','desc')->limit(4)->get();
         return view('pages.welcome')->withNews($news);
     }
+    
 
     public function getContact(){
         return view('pages.contact');

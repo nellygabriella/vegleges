@@ -400,7 +400,7 @@ section
 	width: 29px;
 	height: 29px;
 }
-.header_side span
+.header_side a
 {
 	display: block;
 	position: relative;

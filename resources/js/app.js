@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+import VueResource from "vue-resource"
 
 window.Vue = require('vue');
 
@@ -17,8 +18,8 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-import VueResource from "vue-resource"
-vue.use(VueResource);
+
+Vue.use(VueResource);
  
 
 /**

@@ -1,11 +1,12 @@
-@extends('main')
+@extends('page')
 <?php $titleTag = htmlspecialchars($news->title); ?>
 @section('title', "| $titleTag" )
 
 @section('title','|Hírek/Események')
 @section('stylesheets')
     {!!Html::style('css/layouts/post_single.css')!!}
-    {!!Html::style('css/layouts/post_single_responsive.css')!!}
+	{!!Html::style('css/layouts/post_single_responsive.css')!!}
+	
 @endsection
 
 @section('content')
@@ -49,50 +50,27 @@
 				
 				<!-- Comments -->
 				<div class="news_post_comments">
-					<div class="comments_title">Comments</div>
+					<div class="comments_title">Hozzászólások</div>
 					<ul class="comments_list">
 						
 						<!-- Comment -->
+						@foreach($news->comments as $comment)
 						<li class="comment">
 							<div class="comment_container d-flex flex-row">
-								<div>
-									<div class="comment_image">
-										<img src="images/comment_1.jpg" alt="">
-									</div>
-								</div>
+								
 								<div class="comment_content">
 									<div class="comment_meta">
-										<span class="comment_name"><a href="#">Mark Smith</a></span>
+										<span class="comment_name">{{ $comment->user->name }}</span>
 										<span class="comment_separator">|</span>
-										<span class="comment_date">Dec 18, 2017</span>
+										<span class="comment_date">{{ $comment->created_at}}</span>
 										<span class="comment_separator">|</span>
 										<span class="comment_reply_link"><a href="#">Reply</a></span>
 									</div>
-									<p class="comment_text">Aliquam rhoncus, purus in vehicula porttitor, lacus ante consequat purus, id elementum enim purus nec enim. In sed odio rhoncus, tristique ipsum id, pharetra neque. </p>
+									<p class="comment_text">{{$comment->comment}}</p>
 								</div>
 							</div>
 						</li>
-
-						<!-- Comment -->
-						<li class="comment">
-							<div class="comment_container d-flex flex-row">
-								<div>
-									<div class="comment_image">
-										<img src="images/comment_2.jpg" alt="">
-									</div>
-								</div>
-								<div class="comment_content">
-									<div class="comment_meta">
-										<span class="comment_name"><a href="#">Mark Smith</a></span>
-										<span class="comment_separator">|</span>
-										<span class="comment_date">Dec 18, 2017</span>
-										<span class="comment_separator">|</span>
-										<span class="comment_reply_link"><a href="#">Reply</a></span>
-									</div>
-									<p class="comment_text">Aliquam rhoncus, purus in vehicula porttitor, lacus ante consequat purus, id elementum enim purus nec enim. In sed odio rhoncus, tristique ipsum id, pharetra neque. </p>
-								</div>
-							</div>
-						</li>
+						@endforeach
 
 					</ul>
 
@@ -101,14 +79,14 @@
 				<!-- Leave Comment -->
 
 				<div class="leave_comment">
-					<div class="leave_comment_title">Leave a comment</div>
+					<div class="leave_comment_title">Írj hozzászólást</div>
 
 					<div class="leave_comment_form_container">
-						<form action="post">
-							<input id="comment_form_name" class="input_field contact_form_name" type="text" placeholder="Name" required="required" data-error="Name is required.">
-							<input id="comment_form_email" class="input_field contact_form_email" type="email" placeholder="E-mail" required="required" data-error="Valid email is required.">
-							<textarea id="comment_form_message" class="text_field contact_form_message" name="message" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
-							<button id="comment_send_btn" type="submit" class="comment_send_btn trans_200" value="Submit">send message</button>
+						<form method="post" action="{{ route('comment.add') }}">
+							@csrf
+							<textarea id="comment_form_message" class="text_field contact_form_message" name="comment_body" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
+							<input type="hidden" name="post_id" value="{{ $news->id }}" />
+							<input  type="submit" class="btn btn-warning comment_send_btn trans_200" value="Küld"/>
 						</form>
 					</div>
 				</div>
@@ -120,6 +98,7 @@
 			<div class="col-lg-4">
 				<div class="sidebar">
 
+					<div class="button button_color_1 text-center trans_200"><a href="{{route('news.create')}}">Új hír</a></div>
 					<!-- Archives -->
 					<div class="sidebar_section">
 						<div class="sidebar_section_title">
@@ -209,3 +188,4 @@
 </div>
 
 @endsection
+

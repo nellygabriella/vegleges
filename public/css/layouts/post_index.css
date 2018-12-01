@@ -745,6 +745,16 @@ section
 	height: 48px;
 }
 
+.button_color_1
+{
+	background: #ffb606;
+}
+
+.button_color_1 a
+{
+	color: #FFFFFF;
+}
+
 /*********************************
 9. News
 *********************************/

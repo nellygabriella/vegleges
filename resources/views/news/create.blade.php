@@ -9,9 +9,11 @@
 <script>
 	tinymce.init({
 		selector: 'textarea',
-		plugins: 'link code',
-		menubar: false
+		plugins: 'image media link tinydrive code imagetools',
+		height: 600,
+		toolbar: 'insertfile image link | code'
 	});
+
 </script>
 
 @endsection
@@ -58,7 +60,7 @@
 							{{Form::textarea('body',null,array('class'=>'form-control','required'=>''))}}
 						</div>
 
-						{{Form::submit('Create Post', array('class'=>'btn btn-success btn-lg btn'))}}
+						{{Form::submit('mentés', array('class'=>'btn btn-success btn-lg btn'))}}
 
 					{!! Form::close() !!}
 				</div>

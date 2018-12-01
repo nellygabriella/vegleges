@@ -11,7 +11,8 @@
 				<strong>Komment:</strong> {{ $comment->comment }}
 			</p>
 
-			{{ Form::open(['route' => ['comments.destroy', $comment->id], 'method' => 'DELETE']) }}
+			{{ Form::open(['route' => ['comment.destroy', $comment->id], 'method' => 'DELETE']) }}
+				
 				{{ Form::submit('Igen, törlöm a kommentet', ['class' => 'btn btn-lg btn-block btn-danger']) }}
 			{{ Form::close() }}
 		</div>

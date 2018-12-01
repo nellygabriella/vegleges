@@ -66,7 +66,7 @@
 
 				<div class="col-lg-4">
 					<div class="sidebar">
-
+						<div class="button button_color_1 text-center trans_200"><a href="{{route('news.create')}}">Új hír</a></div>
 						<!-- Archives -->
 						<div class="sidebar_section">
 							<div class="sidebar_section_title">

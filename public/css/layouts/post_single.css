@@ -741,6 +741,16 @@ section
 	height: 48px;
 }
 
+.button_color_1
+{
+	background: #ffb606;
+}
+
+.button_color_1 a
+{
+	color: #FFFFFF;
+}
+
 /*********************************
 9. News
 *********************************/
@@ -748,8 +758,8 @@ section
 .news
 {
 	width: 100%;
-	padding-top: 103px;
-	padding-bottom: 118px;
+	padding-top: 300px;
+	padding-bottom: 200px;
 }
 .news_post
 {

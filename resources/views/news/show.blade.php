@@ -33,7 +33,40 @@
                 </div>
                 </div>
             </div>
+            <div class="col-lg-8 grid-margin stretch-card">
+                <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ $news->comments()->count() }} hozzászólás</h4>
             
+
+                    <table id="order-listing" class="table" cellspacing="0">
+                        <thead>
+                          <tr>
+                              
+                              
+                              <th>Tartalom</th>
+                              
+                              <th></th>
+                              <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+					<tbody>
+						@foreach ($news->comments as $comment)
+						<tr>
+							
+							<td>{{ $comment->comment }}</td>
+							<td>
+								<a href="{{ route('comments.delete', $comment->id) }}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash">Töröl</span></a>
+							</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
+            </div>
+                </div>
+            </div>
             <div class="col-lg-4 grid-margin stretch-card">
                 <div class="card" style="margin-right:50px;">
                     <div class="card-body">
