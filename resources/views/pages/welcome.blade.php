@@ -32,7 +32,7 @@
 				
 				<!-- Hero Slide -->
 				<div class="hero_slide">
-					<div class="hero_slide_background" style="background-image:url(/images/city.jpg)"></div>
+					<div class="hero_slide_background" style="background-image:url(/images/walk.jpg)"></div>
 					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
 						<div class="hero_slide_content text-center">
 							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Get your <span>Education</span> today!</h1>
@@ -78,7 +78,7 @@
 							<img src="images/earth-globe.svg" class="svg" alt="">
 							<div class="hero_box_content">
 								<h2 class="hero_box_title">Események</h2>
-								<a href="courses.html" class="hero_box_link">tovább</a>
+								<a href="#" class="hero_box_link">tovább</a>
 							</div>
 						</div>
 					</div>
@@ -88,7 +88,7 @@
 							<img src="images/books.svg" class="svg" alt="">
 							<div class="hero_box_content">
 								<h2 class="hero_box_title">Jegyzetek</h2>
-								<a href="courses.html" class="hero_box_link">tovább</a>
+								<a href="#" class="hero_box_link">tovább</a>
 							</div>
 						</div>
 					</div>
@@ -98,7 +98,7 @@
 							<img src="images/professor.svg" class="svg" alt="">
 							<div class="hero_box_content">
 								<h2 class="hero_box_title">Fórum</h2>
-								<a href="teachers.html" class="hero_box_link">tovább</a>
+								<a href="#" class="hero_box_link">tovább</a>
 							</div>
 						</div>
 					</div>
@@ -123,58 +123,23 @@
 			<div class="row course_boxes">
 				
 				<!-- Popular Course Item -->
+				@foreach ($notes as $note)
 				<div class="col-lg-4 course_box">
 					<div class="card">
-						<img class="card-img-top" src="images/course_1.jpg" alt="https://unsplash.com/@kellybrito">
+						
 						<div class="card-body text-center">
-							<div class="card-title"><a href="courses.html">A complete guide to design</a></div>
-							<div class="card-text">Adobe Guide, Layes, Smart Objects etc...</div>
-						</div>
-						<div class="price_box d-flex flex-row align-items-center">
-							<div class="course_author_image">
-								<img src="images/author.jpg" alt="https://unsplash.com/@mehdizadeh">
-							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
-						</div>
+							<div class="card-title"><a href="{{ route('post.notessingle', $note->slug) }}">{{$note->title}}</a></div>
+                            <div class="card-text">{{ substr(strip_tags($note->body), 0, 80) }}{{ strlen(strip_tags($note->body)) > 80 ? '...' : "" }}</div>
+                            <div class="course_author_name">{{$note->user->name}}</span></div>
+                        </div>
+						
+							<div class="button button_color_1 text-center trans_200"><a href="{!! route('getfile',$note->filename)!!}" target="_blank"><i class="fas fa-download"></i>Letöltés</a></div>
+						
 					</div>
 				</div>
+                @endforeach
 
-				<!-- Popular Course Item -->
-				<div class="col-lg-4 course_box">
-					<div class="card">
-						<img class="card-img-top" src="images/course_2.jpg" alt="https://unsplash.com/@cikstefan">
-						<div class="card-body text-center">
-							<div class="card-title"><a href="courses.html">Beginners guide to HTML</a></div>
-							<div class="card-text">Adobe Guide, Layes, Smart Objects etc...</div>
-						</div>
-						<div class="price_box d-flex flex-row align-items-center">
-							<div class="course_author_image">
-								<img src="images/author.jpg" alt="https://unsplash.com/@mehdizadeh">
-							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Popular Course Item -->
-				<div class="col-lg-4 course_box">
-					<div class="card">
-						<img class="card-img-top" src="images/course_3.jpg" alt="https://unsplash.com/@dsmacinnes">
-						<div class="card-body text-center">
-							<div class="card-title"><a href="courses.html">Advanced Photoshop</a></div>
-							<div class="card-text">Adobe Guide, Layes, Smart Objects etc...</div>
-						</div>
-						<div class="price_box d-flex flex-row align-items-center">
-							<div class="course_author_image">
-								<img src="images/author.jpg" alt="https://unsplash.com/@mehdizadeh">
-							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 		</div>		
 	</div>

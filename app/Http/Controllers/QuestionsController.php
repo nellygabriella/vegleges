@@ -7,6 +7,7 @@ use App\Question;
 use App\Tag;
 use Session;
 use Auth;
+use Purifier;
 
 class QuestionsController extends Controller
 {
@@ -59,7 +60,7 @@ class QuestionsController extends Controller
         $question->user_id=$request->user()->id;
         $question->question=$request->question;
         $question->slug=$request->slug;
-        $question->body=$request->body;
+        $question->body=Purifier::clean($request->body);
 
         
 
@@ -131,7 +132,7 @@ class QuestionsController extends Controller
         
         $question->question=$request->input('question');
         $question->slug=$request->input('slug');
-        $question->body=$request->input('body');
+        $question->body=Purifier::clean($request->input('body'));
 
         $question->save();
 

@@ -3,7 +3,8 @@
 @section('title','|Hírek/Események')
 @section('stylesheets')
     {!!Html::style('css/layouts/post_index.css')!!}
-    {!!Html::style('css/layouts/post_index_responsive.css')!!}
+	{!!Html::style('css/layouts/post_index_responsive.css')!!}
+	
 @endsection
 
 @section('content')
@@ -37,8 +38,7 @@
 										<a href="{{ route('post.newssingle', $n->slug) }}">{{ $n->title }}</a>
 									</div>
 									<div class="news_post_meta">
-									
-										<span class="news_post_comments"><a href="#">3 Comments</a></span>
+										<span class="news_post_comments">{{$news->comments()->count()}} hozzászólás</span>
 									</div>
 								</div>
 							</div>
@@ -54,11 +54,7 @@
 
 					<!-- Page Nav -->
 
-					<div class="news_page_nav">
-						<ul>
-							<li class="active text-center trans_200">{!! $news->links() !!}</li>
-						</ul>
-					</div>
+					{!! $news->links() !!}		
 
 				</div>
 

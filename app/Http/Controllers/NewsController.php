@@ -10,6 +10,7 @@ use Image;
 use Storage;
 use Auth;
 use App\User;
+use Purifier;
 
 class NewsController extends Controller
 {
@@ -64,7 +65,7 @@ class NewsController extends Controller
         $news->user_id=$request->user()->id;
         $news->title=$request->title;
         $news->slug=$request->slug;
-        $news->body=$request->body;
+        $news->body=Purifier::clean($request->body);;
 
         if($request->hasFile('featured_image')){
 
@@ -144,7 +145,7 @@ class NewsController extends Controller
         
         $news->title=$request->input('title');
         $news->slug=$request->input('slug');
-        $news->body=$request->input('body');
+        $news->body=Purifier::clean($request->input('body'));
 
         if($request->hasFile('featured_image')){
 
@@ -163,11 +164,11 @@ class NewsController extends Controller
 
         $news->tags()->sync($request->tags,false);
 
-        /*if(isset($request->tags)){
+        if(isset($request->tags)){
             $news->tags()->sync($request->tags);
         } else {
             $news->tags()->sync(array());
-        }*/
+        }
 
         Session::flash('success','A post sikeresen mentve.');
 

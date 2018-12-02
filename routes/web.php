@@ -25,8 +25,11 @@ Route::group(['middlewire'=>['web']], function(){
 
     Route::get('forum/{slug}', ['as'=>'post.forumsingle', 'uses'=>'PostController@getQuestionSingle']);
     Route::get('forum', ['uses' => 'PostController@getQuestionIndex', 'as' => 'post.forumindex']);
+    Route::post('/questioncomment/store', 'QuestionCommentsController@store')->name('comment.add');
+    Route::delete('questioncomment/{id}', ['uses' => 'QuestionCommentsController@destroy', 'as' => 'comment.destroy']);
+    Route::get('questioncomment/{id}/delete', ['uses' => 'QuestionCommentsController@delete', 'as' => 'comments.delete']);
 
-    Route::get('projektek', ['uses' => 'PostController@getProjectsIndex', 'as' => 'post.projectsindex']);
+    Route::get('jegyzetek', ['uses' => 'PostController@getNotesIndex', 'as' => 'post.notesindex']);
     Route::get('jegyzetek/{slug}', ['as'=>'post.notessingle', 'uses'=>'PostController@getNotesSingle']);
 
     Route::get('projektek', ['uses' => 'PostController@getProjectsIndex', 'as' => 'post.projectsindex']);

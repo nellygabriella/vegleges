@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Comment;
-use App\News;
-use App\Project;
+use App\QestionComment;
+use App\Question;
 use Auth;
 use Session;
 use Purifier;
 
-class CommentsController extends Controller
+class QuestionCommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,10 +19,10 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        $comment = new Comment;
+        $comment = new QestionComment;
         $comment->comment = Purifier::clean($request->get('comment_body'));
         $comment->user()->associate($request->user());
-        $news = News::find($request->get('post_id'));
+        $news = Question::find($request->get('post_id'));
         $news->comments()->save($comment);
 
         return back();
@@ -31,14 +30,14 @@ class CommentsController extends Controller
 
     public function delete($id)
     {
-        $comment = Comment::find($id);
+        $comment = QestionComment::find($id);
         
         return view('comments.delete')->withComment($comment);
     }
 
     public function destroy($id)
     {
-        $comment = Comment::find($id);
+        $comment = QestionComment::find($id);
         $comment->delete();
         Session::flash('success','A hozzászólás sikeresen törölve.');
         return view('comments.delete')->withComment($comment);

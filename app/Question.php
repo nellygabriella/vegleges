@@ -14,6 +14,6 @@ class Question extends Model
 
     public function comments()
     {
-    	return $this->hasMany('App\Comment');
+        return $this->morphMany('App\QestionComment', 'commentable')->whereNull('parent_id');
     }
 }

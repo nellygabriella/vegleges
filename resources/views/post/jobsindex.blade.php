@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title','|Projektek')
+@section('title','|Állások')
 @section('stylesheets')
     {!!Html::style('css/layouts/post_index.css')!!}
     {!!Html::style('css/layouts/post_index_responsive.css')!!}
@@ -52,11 +52,7 @@
 
 					<!-- Page Nav -->
 
-					<div class="news_page_nav">
-						<ul>
-							<li class="active text-center trans_200">{!! $jobs->links() !!}</li>
-						</ul>
-					</div>
+					{!! $jobs->links() !!}
 
 				</div>
 

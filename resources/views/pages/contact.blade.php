@@ -8,9 +8,10 @@
         <title>MEduline</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" type="text/css" href="{{ URL::to('/') }}/css/contact.css" />
+        <link rel="stylesheet" type="text/css" href="{{ URL::to('/') }}/css/layouts/contact.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        
         
     </head>
 
@@ -21,7 +22,7 @@
 
             <div class="home">
                 <div class="home-background-container prlx-parent">
-                    <div class="home-background prlx" style="background-image:url(images/news_background.jpg)"></div>
+                    <div class="home-background prlx" style="background-image:url(/images/city.jpg)"></div>
                 </div>
                 <div class="home-content">
                     <h1>Kapcsolat</h1>
@@ -43,7 +44,7 @@
                                         <input id="subject" name="subject" class="input-field contact-form-name" type="text" placeholder="Név" required="required" data-error="Kötelező kitölteni!">
                                         <input id="email" name="email" class="input-field contact-form-email" type="email" placeholder="E-mail" required="required" data-error="Hibás email cím!">
                                         <textarea id="message" name="message" class="text-field contact-form-message" name="message" placeholder="Üzenet" required="required" data-error="Hagyj üzenetet."></textarea>
-                                        <input type="submit" value="Send Message" class="btn btn-success">
+                                        <input type="submit" value="Send Message" class="contact_send_btn">
                                     </form>
                                 </div>
                             </div>
@@ -60,3 +61,8 @@
             </div> 
         </div>
     </body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

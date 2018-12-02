@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\News;
+use App\Note;
 use Mail;
 use Session;
 
@@ -12,7 +13,8 @@ class PagesController extends Controller
     public function getIndex(){
             
         $news=News::orderBy('created_at','desc')->limit(4)->get();
-        return view('pages.welcome')->withNews($news);
+        $notes=Note::orderBy('created_at','desc')->limit(3)->get();
+        return view('pages.welcome')->withNews($news)->withNotes($notes);
     }
     
 

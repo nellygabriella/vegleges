@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use Auth;
+use Purifier;
 
 class NotesController extends Controller
 {
@@ -53,7 +54,7 @@ class NotesController extends Controller
         $note->user_id=$request->user()->id;
         $note->title=$request->title;
         $note->slug=$request->slug;
-        $note->body=$request->body;
+        $note->body=Purifier::clean($request->body);
 
         $file=$request->file('filefield');
         $extension = $file->getClientOriginalExtension();
@@ -113,7 +114,7 @@ class NotesController extends Controller
 
         $note->title=$request->input('title');
         $note->slug=$request->input('slug');
-        $note->body=$request->input('body');
+        $note->body=Purifier::clean($request->input('body'));
         $note->original_filename=$request->input('original_filename');
 
 

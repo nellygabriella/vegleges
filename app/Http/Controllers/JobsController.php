@@ -7,6 +7,7 @@ use App\Job;
 use App\Tag;
 use Session;
 use Auth;
+use Prufier;
 
 class JobsController extends Controller
 {
@@ -62,7 +63,7 @@ class JobsController extends Controller
         $job->company = $request->company;
         $job->city = $request->city;
         $job->slug = $request->slug;
-        $job->body = $request->body;
+        $job->body = Purifier::clean($request->body);
 
         
         $job->save();
@@ -132,11 +133,11 @@ class JobsController extends Controller
 
         $job=Job::find($id);
         
-        $job->position = $request->position;
-        $job->company = $request->company;
-        $job->city = $request->city;
-        $job->slug = $request->slug;
-        $job->body = $request->body;
+        $job->position = $request->input('position');
+        $job->company = $request->input('company');
+        $job->city = $request->input('city');
+        $job->slug = $request->input('slug');
+        $job->body = Purifier::clean($request->input('body'));
 
         $job->save();
 

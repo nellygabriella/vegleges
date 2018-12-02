@@ -1,14 +1,15 @@
 @extends('main')
 
-@section('title','|Projektek')
+@section('title','|Hírek/Események')
 @section('stylesheets')
     {!!Html::style('css/layouts/post_index.css')!!}
-    {!!Html::style('css/layouts/post_index_responsive.css')!!}
+	{!!Html::style('css/layouts/post_index_responsive.css')!!}
+	
 @endsection
 
 @section('content')
 
-    @section('hometitle','Projektek')
+    @section('hometitle','Hírek/Események')
         
     <div class="news">
 		<div class="container">
@@ -20,41 +21,42 @@
 					
 					<div class="news_posts">
                         <!-- News Post -->
-                        @foreach ($projects as $project)
+                        @foreach ($questions as $question)
 						<div class="news_post">
-							<div class="news_post_image">
-								<img src="{{asset('/images/' . $project->image)}}" alt="">
-							</div>
 							<div class="news_post_top d-flex flex-column flex-sm-row">
 								<div class="news_post_date_container">
 									<div class="news_post_date d-flex flex-column align-items-center justify-content-center">
-										<div>{{ date('j', strtotime($project->created_at)) }}</div>
-										<div>{{ date('M', strtotime($project->created_at)) }}</div>
+										<div>{{ date('j', strtotime($question->created_at)) }}</div>
+										<div>{{ date('M', strtotime($question->created_at)) }}</div>
 									</div>
 								</div>
 								<div class="news_post_title_container">
 									<div class="news_post_title">
-										<a href="{{ route('post.projectsingle', $project->slug) }}">{{ $project->title }}</a>
+										<a href="{{ route('post.newssingle', $question->slug) }}">{{ $question->title }}</a>
 									</div>
 									<div class="news_post_meta">
 									
-										<span class="news_post_comments"><a href="#">3 Comments</a></span>
+										<span class="news_post_comments">{{$question->comments()->count()}} hozzászólás</span>
 									</div>
 								</div>
 							</div>
 							<div class="news_post_text">
-								<p>{{ substr(strip_tags($project->body), 0, 250) }}{{ strlen(strip_tags($project->body)) > 250 ? '...' : "" }}</p>
+								<p>{{ substr(strip_tags($question->body), 0, 250) }}{{ strlen(strip_tags($question->body)) > 250 ? '...' : "" }}</p>
 							</div>
 							<div class="news_post_button text-center trans_200">
-								<a href="{{ route('post.projectsingle', $project->slug) }}">Tovább</a>
+								<a href="{{ route('post.forumsingle', $question->slug) }}">Tovább</a>
 							</div>
                         </div>
                         @endforeach
 					</div>
 
 					<!-- Page Nav -->
-
-					{!! $projects->links() !!}
+                    
+						
+					{{ $questions->links() }}
+						
+					
+					
 
 				</div>
 
@@ -62,7 +64,7 @@
 
 				<div class="col-lg-4">
 					<div class="sidebar">
-
+						<div class="button button_color_1 text-center trans_200"><a href="{{route('questions.create')}}">Új hír</a></div>
 						<!-- Archives -->
 						<div class="sidebar_section">
 							<div class="sidebar_section_title">
@@ -133,16 +135,15 @@
 
 						<div class="sidebar_section">
 							<div class="sidebar_section_title">
-								<h3>Tags</h3>
+								<h3>Címkék</h3>
 							</div>
+								
 							<div class="tags d-flex flex-row flex-wrap">
-								<div class="tag"><a href="#">Course</a></div>
-								<div class="tag"><a href="#">Design</a></div>
-								<div class="tag"><a href="#">FAQ</a></div>
-								<div class="tag"><a href="#">Teachers</a></div>
-								<div class="tag"><a href="#">School</a></div>
-								<div class="tag"><a href="#">Graduate</a></div>
+								@foreach ($question->tags as $tag)
+								<div class="tag"><a href="#">{{ $tag->name }}</a></div>
+								@endforeach
 							</div>
+							
 						</div>
 
 					</div>

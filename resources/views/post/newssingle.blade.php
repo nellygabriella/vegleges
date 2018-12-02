@@ -7,6 +7,7 @@
     {!!Html::style('css/layouts/post_single.css')!!}
 	{!!Html::style('css/layouts/post_single_responsive.css')!!}
 	
+	
 @endsection
 
 @section('content')
@@ -188,4 +189,15 @@
 </div>
 
 @endsection
+@section('scripts')
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 
+<script>
+	tinymce.init({
+		selector: 'textarea',
+		plugins: 'image media link tinydrive code imagetools',
+		height: 250,
+		toolbar: 'insertfile image link | code'
+	});
+</script>
+@endsection

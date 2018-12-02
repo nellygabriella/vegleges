@@ -10,6 +10,7 @@ use Image;
 use Storage;
 use Auth;
 use App\User;
+use Purifer;
 
 class ProjectsController extends Controller
 {
@@ -64,7 +65,7 @@ class ProjectsController extends Controller
         $project->user_id=$request->user()->id;
         $project->title=$request->title;
         $project->slug=$request->slug;
-        $project->body=$request->body;
+        $project->body=Purifier::clean($request->body);
 
         if($request->hasFile('featured_image')){
 
@@ -144,7 +145,7 @@ class ProjectsController extends Controller
         
         $project->title=$request->input('title');
         $project->slug=$request->input('slug');
-        $project->body=$request->input('body');
+        $project->body=Purifier::clean($request->input('body'));
 
         if($request->hasFile('featured_image')){
 

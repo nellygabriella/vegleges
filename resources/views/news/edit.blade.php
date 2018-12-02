@@ -9,8 +9,9 @@
 <script>
 	tinymce.init({
 		selector: 'textarea',
-		plugins: 'link code',
-		menubar: false
+		plugins: 'image media link tinydrive code imagetools',
+		height: 450,
+		toolbar: 'insertfile image link | code'
 	});
 </script>
 @endsection
