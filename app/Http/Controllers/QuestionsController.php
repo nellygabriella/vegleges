@@ -133,7 +133,7 @@ class QuestionsController extends Controller
         
             $this -> validate($request, array(
                 'question'=>'required|max:5000',
-                'slug'=>'required|alpha_dash|min:5|max:255|unique:questions,slug'.$id,
+                'slug'=>'required|alpha_dash|min:5|max:255|unique:questions,slug',
                 'body'=>'required'
             ));
         }

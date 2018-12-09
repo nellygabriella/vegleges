@@ -47,7 +47,7 @@ class PostController extends Controller
 
         $project = Project::where('slug','=',$slug)->first();
 
-        return view('post.newssingle')->withProject($project);
+        return view('post.projectsingle')->withProject($project);
     }
 
     public function getJobsIndex() {
