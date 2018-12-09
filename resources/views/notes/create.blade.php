@@ -24,7 +24,7 @@
 			<div class="col-md-10 grid-margin stretch-card">
 				<div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Új poszt szerkesztése</h4>
+                  <h4 class="card-title">Új jegyzet fetöltése</h4>
 				  
 					{!! Form::open(array('route' => 'notes.store','data-parsley-validate' => '', 'files'=>true)) !!}
 
@@ -62,6 +62,7 @@
 @section('scripts')
 
 {!!Html::script('js/parsley.min.js')!!}
+
 
 
 @endsection

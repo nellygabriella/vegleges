@@ -7,12 +7,15 @@
 <meta name="description" content="Course Project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{{ URL::to('/') }}/css/carousel/owl.carousel.css" />
 <link rel="stylesheet" type="text/css" href="{{ URL::to('/') }}/css/carousel/owl.theme.default.css" />
 <link rel="stylesheet" type="text/css" href="{{ URL::to('/') }}/css/carousel/animate.css" />
 <link rel="stylesheet" type="text/css" href="{{ URL::to('/') }}/css/layouts/main.css" />
+<link rel="stylesheet" type="text/css" href="{{ URL::to('/') }}/css/layouts/main_responsive.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -20,7 +23,78 @@
 
 	<!-- Header -->
 
-	@include('partials._nav')
+	<header class="header d-flex flex-row">
+		<div class="header_content d-flex flex-row align-items-center">
+			<!-- Logo -->
+			<div class="logo_container">
+				<div class="logo">
+					<img src="images/logo.png" alt="">
+					<span>MEduline</span>
+				</div>
+			</div>
+
+			<!-- Main Navigation -->
+			<nav class="main_nav_container">
+				<div class="main_nav">
+					<ul class="main_nav_list">
+						<li class="main_nav_item {{Request::is('/hirek') ? "active" : ""}}"><a href="/hirek">Hírek</a></li>
+					<li class="main_nav_item {{Request::is('/jegyzetek') ? "active" : ""}}"><a href="/jegyzetek">Jegyzetek</a></li>
+					<li class="main_nav_item {{Request::is('/projektek') ? "active" : ""}}"><a href="/projektek">Projektek</a></li>
+					<li class="main_nav_item {{Request::is('/allas') ? "active" : ""}}"><a href="/allas">Állás</a></li>
+					<li class="main_nav_item {{Request::is('/forum') ? "active" : ""}}"><a href="/forum">Fórum</a></li>
+					<li class="main_nav_item {{Request::is('/kapcsolat') ? "active" : ""}}"><a href="/kapcsolat">Kapcsolat</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<div class="header_side d-flex flex-row justify-content-center align-items-center">
+			<a href="{{ route('login') }}">Bejelentkezés</a>
+		</div>
+
+		<!-- Hamburger -->
+		<div class="hamburger_container">
+			<i class="fas fa-bars trans_200"></i>
+		</div>
+
+	</header>
+
+	<div class="menu_container menu_mm">
+
+		<!-- Menu Close Button -->
+		<div class="menu_close_container">
+			<div class="menu_close"></div>
+		</div>
+
+		<!-- Menu Items -->
+		<div class="menu_inner menu_mm">
+			<div class="menu menu_mm">
+				<ul class="menu_list menu_mm">
+					<li class="menu_item menu_mm"><a href="/hirek">Hírek</a></li>
+					<li class="menu_item menu_mm"><a href="/jegyzetek">Jegyzetek</a></li>"></li>
+					<li class="menu_item menu_mm"><a href="/projektek">Projektek</a></li>
+					<li class="menu_item menu_mm"><a href="/allas">Állás</a></li>
+					<li class="menu_item menu_mm"><a href="/forum">Fórum</a></li>
+					<li class="menu_item menu_mm"><a href="/kapcsolat">Kapcsolat</a></li>
+				</ul>
+
+				<!-- Menu Social -->
+				
+				<div class="menu_social_container menu_mm">
+					<ul class="menu_social menu_mm">
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-instagram"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-twitter"></i></a></li>
+					</ul>
+				</div>
+
+				<div class="menu_copyright menu_mm">Colorlib All rights reserved</div>
+			</div>
+
+		</div>
+
+	</div>
 	
 	<!-- Home -->
 
@@ -32,7 +106,7 @@
 				
 				<!-- Hero Slide -->
 				<div class="hero_slide">
-					<div class="hero_slide_background" style="background-image:url(/images/walk.jpg)"></div>
+					<div class="hero_slide_background" style="background-image:url(images/slider_background.jpg)"></div>
 					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
 						<div class="hero_slide_content text-center">
 							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Get your <span>Education</span> today!</h1>
@@ -42,7 +116,7 @@
 				
 				<!-- Hero Slide -->
 				<div class="hero_slide">
-					<div class="hero_slide_background" style="background-image:url(/images/city.jpg)"></div>
+					<div class="hero_slide_background" style="background-image:url(images/slider_background.jpg)"></div>
 					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
 						<div class="hero_slide_content text-center">
 							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Get your <span>Education</span> today!</h1>
@@ -52,7 +126,7 @@
 				
 				<!-- Hero Slide -->
 				<div class="hero_slide">
-					<div class="hero_slide_background" style="background-image:url(/images/city.jpg)"></div>
+					<div class="hero_slide_background" style="background-image:url(images/slider_background.jpg)"></div>
 					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
 						<div class="hero_slide_content text-center">
 							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Get your <span>Education</span> today!</h1>
@@ -154,7 +228,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="section_title text-center">
-						<h1>Our Services</h1>
+						<h1>Lehetőségek</h1>
 					</div>
 				</div>
 			</div>
@@ -263,11 +337,11 @@
 	@include('partials._footer')
 
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
-@include('partials._javascript')
-
-<script src="{{ URL::to('/') }}/css/carousel/owl.carusel.js"></script>
-
-
+<script src="{{ URL::to('/') }}/js/owl.carousel.js"></script>
+<script src="{{ URL::to('/') }}/js/custom.js"></script>
 </body>
 </html>

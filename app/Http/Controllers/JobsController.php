@@ -7,7 +7,7 @@ use App\Job;
 use App\Tag;
 use Session;
 use Auth;
-use Prufier;
+use Purifier;
 
 class JobsController extends Controller
 {
@@ -81,7 +81,11 @@ class JobsController extends Controller
     public function show($id)
     {
         $job=Job::find($id);
-        return view('jobs.show')->withJob($job);
+        if(Auth::id() == $job->user_id){
+            return view('jobs.show')->withJob($job);
+        }else{
+            return view('error.owner');
+        }
     }
 
     /**
@@ -99,7 +103,12 @@ class JobsController extends Controller
         foreach ($tags as $tag){
             $tags2[$tag->id]= $tag->name;
         }
-        return view('jobs.edit')->withJob($job)->withTags($tags2);
+
+        if(Auth::id() == $job->user_id){
+            return view('jobs.edit')->withJob($job)->withTags($tags2);
+        }else{
+            return view('error.owner');
+        }
     }
 
     /**

@@ -9,8 +9,9 @@
 <script>
 	tinymce.init({
 		selector: 'textarea',
-		plugins: 'link code',
-		menubar: false
+		plugins: 'image media link tinydrive code imagetools',
+		height: 450,
+		toolbar: 'insertfile image link | code'
 	});
 </script>
 
@@ -58,10 +59,11 @@
 					{!! Form::close() !!}
 				</div>
 				</div>
-				
+			</div>
             </div> 
 		  </div>
 	</div>
+	
 @endsection
 
 @section('scripts')
@@ -72,6 +74,7 @@
 <script type="text/javascript">
     $('.select-multi').select2();
 </script>
+
 
 
 @endsection

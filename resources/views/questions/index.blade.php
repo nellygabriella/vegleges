@@ -46,13 +46,7 @@
         </div>
        
       </div>
-       <nav>
-          <ul class="pagination rounded-flat justify-content-center pagination-secondary">
-              <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-left"></i></a></li>
-              {!! $questions->links(); !!}
-              <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-right"></i></a></li>
-          </ul>
-        </nav>
+       
 		  </div>
   </div>
 

@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title','|Hírek/Események')
+@section('title','|Fórum')
 @section('stylesheets')
     {!!Html::style('css/layouts/post_index.css')!!}
 	{!!Html::style('css/layouts/post_index_responsive.css')!!}
@@ -9,7 +9,7 @@
 
 @section('content')
 
-    @section('hometitle','Hírek/Események')
+    @section('hometitle','Fórum')
         
     <div class="news">
 		<div class="container">
@@ -32,7 +32,7 @@
 								</div>
 								<div class="news_post_title_container">
 									<div class="news_post_title">
-										<a href="{{ route('post.newssingle', $question->slug) }}">{{ $question->title }}</a>
+										<a href="{{ route('post.newssingle', $question->slug) }}">{{ $question->question }}</a>
 									</div>
 									<div class="news_post_meta">
 									
@@ -64,7 +64,7 @@
 
 				<div class="col-lg-4">
 					<div class="sidebar">
-						<div class="button button_color_1 text-center trans_200"><a href="{{route('questions.create')}}">Új hír</a></div>
+							<a href="{{route('questions.create')}}" class="button button_color_1 text-center trans_200" role="button">Új kérdés</a>
 						<!-- Archives -->
 						<div class="sidebar_section">
 							<div class="sidebar_section_title">
@@ -152,4 +152,8 @@
 		</div>
 	</div>
     
+@endsection
+
+@section('scripts')
+{!!Html::script('js/custom.js')!!}
 @endsection

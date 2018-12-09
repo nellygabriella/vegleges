@@ -5,7 +5,7 @@
 		<nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             <li class="nav-item nav-category">
-              <span class="nav-link">Hirek</span>
+              <span class="nav-link">Hírek</span>
             </li>
 			      <li class="nav-item">
               <a class="nav-link" href="{{ route('news.index') }}">
@@ -39,7 +39,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('projects.index') }}">
-                <span class="menu-title">Projekteim</span>
+                <span class="menu-title">Projektjeim</span>
                 <i class="icon-speedometer menu-icon"></i>
               </a>
             </li>
@@ -79,15 +79,7 @@
                 <i class="icon-speedometer menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item nav-category">
-              <span class="nav-link">Tagek</span>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('tags.index') }}">
-                <span class="menu-title">Szerkesztés</span>
-                <i class="icon-speedometer menu-icon"></i>
-              </a>
-          </li>
+            
 		  </ul>
 		</nav>
 		

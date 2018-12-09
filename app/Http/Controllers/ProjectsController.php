@@ -10,7 +10,7 @@ use Image;
 use Storage;
 use Auth;
 use App\User;
-use Purifer;
+use Purifier;
 
 class ProjectsController extends Controller
 {
@@ -72,7 +72,7 @@ class ProjectsController extends Controller
             $image=$request->file('featured_image');
             $filename = time().'.'.$image->getClientOriginalExtension();
             $location = public_path('images/'.$filename);
-            Image::make($image)->resize(800,400)->save($location);
+            Image::make($image)->resize(730,384)->save($location);
 
             $project->image=$filename;
         }
@@ -95,7 +95,11 @@ class ProjectsController extends Controller
     public function show($id)
     {
         $project=Project::find($id);
-        return view('projects.show')->withProject($project);
+        if(Auth::id() == $project->user_id){
+            return view('projects.show')->withProject($project);
+        }else{
+            return view('error.owner');
+        }
     }
 
     /**
@@ -113,7 +117,12 @@ class ProjectsController extends Controller
         foreach ($tags as $tag){
             $tags2[$tag->id]= $tag->name;
         }
-        return view('projects.edit')->withProject($project)->withTags($tags2);
+
+        if(Auth::id() == $project->user_id){
+            return view('projects.edit')->withProject($project)->withTags($tags2);
+        }else{
+            return view('error.owner');
+        }
     }
 
     /**
@@ -136,7 +145,7 @@ class ProjectsController extends Controller
         
             $this -> validate($request, array(
                 'title'=>'required|max:255',
-                'slug'=>'required|alpha_dash|min:5|max:255|unique:projects,slug'.$id,
+                'slug'=>'required|alpha_dash|min:5|max:255|unique:projects,slug',
                 'body'=>'required'
             ));
         }
@@ -152,7 +161,7 @@ class ProjectsController extends Controller
             $image=$request->file('featured_image');
             $filename = time().'.'.$image->getClientOriginalExtension();
             $location = public_path('images/'.$filename);
-            Image::make($image)->resize(800,400)->save($location);
+            Image::make($image)->resize(730,384)->save($location);
             $oldfilename =$project->image;
 
             $project->image=$filename;
@@ -189,7 +198,7 @@ class ProjectsController extends Controller
 
         $project -> delete();
 
-        Session::flash('succes','A post sikeresen törölve.');
+        Session::flash('succes','A bejegyzés sikeresen törölve.');
         return redirect()->route('projects.index');
     }
 }

@@ -82,7 +82,12 @@ class QuestionsController extends Controller
     public function show($id)
     {
         $question=Question::find($id);
-        return view('questions.show')->withQuestion($question);
+
+        if(Auth::id() == $question->user_id){
+            return view('questions.show')->withQuestion($question);
+        }else{
+            return view('error.owner');
+        }
     }
 
     /**
@@ -100,7 +105,12 @@ class QuestionsController extends Controller
         foreach ($tags as $tag){
             $tags2[$tag->id]= $tag->name;
         }
-        return view('questions.edit')->withQuestion($question)->withTags($tags2);
+
+        if(Auth::id() == $question->user_id){
+            return view('questions.edit')->withQuestion($question)->withTags($tags2);
+        }else{
+            return view('error.owner');
+        }
     }
 
     /**

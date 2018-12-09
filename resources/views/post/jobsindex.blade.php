@@ -34,9 +34,9 @@
 										<a href="{{ route('post.jobsingle', $job->slug) }}">{{ $job->title }}</a>
 									</div>
 									<div class="news_post_meta">
-                                        <span class="news_post_author"><a href="#">$job->company</a></span>
+                                        <span class="news_post_author"><a href="#">{{$job->company}}</a></span>
                                         <span>|</span>
-                                        <span class="news_post_comments"><a href="#">$job->city</a></span>
+                                        <span class="news_post_comments"><a href="#">{{$job->city}}</a></span>
 									</div>
 								</div>
 							</div>
@@ -60,6 +60,8 @@
 
 				<div class="col-lg-4">
 					<div class="sidebar">
+
+							<a href="{{route('jobs.create')}}" class="button button_color_1 text-center trans_200" role="button">Új munka</a>
 
 						<!-- Archives -->
 						<div class="sidebar_section">

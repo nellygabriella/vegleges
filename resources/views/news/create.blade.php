@@ -26,22 +26,22 @@
 			<div class="col-md-10 grid-margin stretch-card">
 				<div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Új post</h4>
+                  <h4 class="card-title">Új bejegyzés</h4>
 				  
 					{!! Form::open(array('route' => 'news.store','data-parsley-validate' => '', 'files'=>true)) !!}
 
 						<div class="form-group">
 							{{Form::label('title', 'Cím: ')}}
-							{{Form::text('title', null, array('class'=>'form-control', 'required'=>'', 'maxlength'=>'255'))}}
+							{{Form::text('title', null, array('class'=>'form-control'))}}
 						</div>
 
 						<div class="form-group">
 							{{Form::label('slug','URL')}}
-							{{Form::text('slug',null,array('class'=>'form-control', 'required'=>'', 'minlength'=>'5','maxlength'=>'255'))}}
+							{{Form::text('slug',null,array('class' => 'form-control'))}}
 						</div>
 						
 						<div class="form-group">
-						{{ Form::label('tags', 'Tags:') }}
+						{{ Form::label('tags', 'Címke:') }}
 						<select class="select-multi form-control" name="tags[]" multiple="multiple">
 							@foreach($tags as $tag)
 								<option value='{{ $tag->id }}'>{{ $tag->name }}</option>
@@ -59,7 +59,7 @@
 							{{Form::textarea('body',null,array('class'=>'form-control','required'=>''))}}
 						</div>
 
-						{{Form::submit('mentés', array('class'=>'btn btn-success btn-lg btn'))}}
+						{{Form::submit('Mentés', array('class'=>'btn btn-success btn-lg btn'))}}
 
 					{!! Form::close() !!}
 				</div>
@@ -79,5 +79,13 @@
     $('.select-multi').select2();
 </script>
 
+<script>
+$("#title").keyup(function(){
+	var str = $(this).val();
+	var trims = $.trim(str);
+	var slug = trims.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
+	$("#slug").val(slug.toLowerCase())
+})
+</script>
 
 @endsection

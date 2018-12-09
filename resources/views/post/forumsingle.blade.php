@@ -1,8 +1,8 @@
 @extends('page')
-<?php $titleTag = htmlspecialchars($question->title); ?>
+<?php $titleTag = htmlspecialchars($question->question); ?>
 @section('title', "| $titleTag" )
 
-@section('title','|Hírek/Események')
+
 @section('stylesheets')
     {!!Html::style('css/layouts/post_single.css')!!}
 	{!!Html::style('css/layouts/post_single_responsive.css')!!}
@@ -36,7 +36,7 @@
 									<h1>{{ $question->question }}</h1>
 								</div>
 								<div class="news_post_meta">
-									<span class="news_post_comments"><a href="#">$question->comments()->count()</a></span>
+									<span class="news_post_comments"><a href="#">{{$question->comments()->count()}}</a></span>
 								</div>
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 										<span class="comment_separator">|</span>
 										<span class="comment_reply_link"><a href="#">Reply</a></span>
 									</div>
-									<p class="comment_text">{{$comment->comment}}</p>
+									<p class="comment_text">{!!$comment->comment!!}</p>
 								</div>
 							</div>
 						</li>
@@ -96,8 +96,8 @@
 
 			<div class="col-lg-4">
 				<div class="sidebar">
-
-					<div class="button button_color_1 text-center trans_200"><a href="{{route('questions.create')}}">Új hír</a></div>
+					
+						<a href="{{route('questions.create')}}" class="button button_color_1 text-center trans_200" role="button">Új kérdés</a>
 					<!-- Archives -->
 					<div class="sidebar_section">
 						<div class="sidebar_section_title">

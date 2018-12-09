@@ -38,14 +38,14 @@
 					<!-- Footer Column - Usefull Links -->
 
 					<div class="col-lg-3 footer_col">
-						<div class="footer_column_title">Usefull Links</div>
+						<div class="footer_column_title">Hasznos linkek</div>
 						<div class="footer_column_content">
 							<ul>
-								<li class="footer_list_item"><a href="#">Testimonials</a></li>
-								<li class="footer_list_item"><a href="#">FAQ</a></li>
-								<li class="footer_list_item"><a href="#">Community</a></li>
-								<li class="footer_list_item"><a href="#">Campus Pictures</a></li>
-								<li class="footer_list_item"><a href="#">Tuitions</a></li>
+								<li class="footer_list_item"><a href="#"></a></li>
+								<li class="footer_list_item"><a href="#"></a></li>
+								<li class="footer_list_item"><a href="#"></a></li>
+								<li class="footer_list_item"><a href="#"></a></li>
+								<li class="footer_list_item"><a href="#"></a></li>
 							</ul>
 						</div>
 					</div>
@@ -53,15 +53,9 @@
 					<!-- Footer Column - Contact -->
 
 					<div class="col-lg-3 footer_col">
-						<div class="footer_column_title">Contact</div>
+						<div class="footer_column_title">Kapcsolat</div>
 						<div class="footer_column_content">
 							<ul>
-								<li class="footer_contact_item">
-									<div class="footer_contact_icon">
-										<img src="images/placeholder.svg" alt="https://www.flaticon.com/authors/lucy-g">
-									</div>
-									Blvd Libertad, 34 m05200 Arévalo
-								</li>
 								<li class="footer_contact_item">
 									<div class="footer_contact_icon">
 										<img src="images/smartphone.svg" alt="https://www.flaticon.com/authors/lucy-g">

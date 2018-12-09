@@ -342,6 +342,7 @@ section
 	vertical-align: middle;
 	text-transform: uppercase;
 	margin-left: 3px;
+	text-decoration: none;
 }
 
 /*********************************
@@ -379,6 +380,7 @@ section
 	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
+	text-decoration: none;
 }
 .main_nav_item a:hover
 {

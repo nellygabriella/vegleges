@@ -5,7 +5,7 @@
 		<div class="logo_container">
 			<div class="logo">
 				<img src="/images/logo.png" alt="">
-				<span>MEduline</span>
+				<a href="/">MEduline</a>
 			</div>
 		</div>
 
@@ -24,8 +24,12 @@
 		</nav>
 	</div>
 	<div class="header_side d-flex flex-row justify-content-center align-items-center">
+		@guest
+			<a href="{{ route('login') }}">Bejelentkezés</a>
+			@else
+			<a href="{{route('home')}}">{{ Auth::user()->name }} </a>
+		@endguest
 		
-		<a href="{{ route('login') }}">Bejelentkezés</a>
 	</div>
 
 	<!-- Hamburger -->
@@ -46,12 +50,12 @@
 	<div class="menu_inner menu_mm">
 		<div class="menu menu_mm">
 			<ul class="menu_list menu_mm">
-				<li class="menu_item menu_mm {{Request::is('/hirek') ? "active" : ""}}"><a href="/hirek">Hírek</a></li>
-				<li class="menu_item menu_mm {{Request::is('/jegyzetek') ? "active" : ""}}"><a href="/jegyzetek">Jegyzetek</a></li>"><a href="#">About us</a></li>
-				<li class="menu_item menu_mm {{Request::is('/projektek') ? "active" : ""}}"><a href="/projektek">Projektek</a></li>
-				<li class="menu_item menu_mm {{Request::is('/allas') ? "active" : ""}}"><a href="/allas">Állás</a></li>
-				<li class="menu_item menu_mm {{Request::is('/forum') ? "active" : ""}}"><a href="/forum">Fórum</a></li>
-				<li class="menu_item menu_mm{{Request::is('/kapcsolat') ? "active" : ""}}"><a href="/kapcsolat">Kapcsolat</a></li>
+				<li class="menu_item menu_mm"><a href="/hirek">Hírek</a></li>
+				<li class="menu_item menu_mm"><a href="/jegyzetek">Jegyzetek</a></li>"></li>
+				<li class="menu_item menu_mm"><a href="/projektek">Projektek</a></li>
+				<li class="menu_item menu_mm"><a href="/allas">Állás</a></li>
+				<li class="menu_item menu_mm"><a href="/forum">Fórum</a></li>
+				<li class="menu_item menu_mm"><a href="/kapcsolat">Kapcsolat</a></li>
 			</ul>
 
 			<!-- Menu Social -->

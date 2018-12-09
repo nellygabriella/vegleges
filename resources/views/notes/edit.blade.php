@@ -30,24 +30,24 @@
                             {!!Form::model($note,['route'=>['notes.update',$note->id],'method'=>'PUT', 'files' =>true])!!}
 
                             <div class="form-group">
-                                {{Form::label('title','Tile:')}}
+                                {{Form::label('title','Cím:')}}
                                 {{Form::text('title',null,["class"=>'form-control input-lg'])}}
                             </div>
 
                             <div class="form-group">
-                                {{Form::label('slug','Slug',['class'=>'form-spacing-top'])}}
+                                {{Form::label('slug','URL',['class'=>'form-spacing-top'])}}
                                 {{Form::text('slug',null,['class'=>'form-control input-lg form-spacing-top'])}}
                             </div>
 
                             
 
                             <div class="form-group">
-                                {{ Form::label('filefield', 'Kép cseréje:', ['class' => 'form-spacing-top']) }}
+                                {{ Form::label('filefield', 'Fájl cseréje:', ['class' => 'form-spacing-top']) }}
                                 {{ Form::file('filefield')}}
                             </div>
 
                             <div class="form-group">
-                                {{Form::label('body',"Body",['class'=>'form-spacing-top'])}}
+                                {{Form::label('body',"Megjegyzés",['class'=>'form-spacing-top'])}}
                                 {{Form::textarea('body',null,['class'=>'form-control'])}}
                             </div>
 

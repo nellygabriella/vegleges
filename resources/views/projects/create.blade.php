@@ -9,8 +9,9 @@
 <script>
 	tinymce.init({
 		selector: 'textarea',
-		plugins: 'link code',
-		menubar: false
+		plugins: 'image media link tinydrive code imagetools',
+		height: 450,
+		toolbar: 'insertfile image link | code'
 	});
 </script>
 
@@ -25,7 +26,7 @@
 			<div class="col-md-10 grid-margin stretch-card">
 				<div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Új post</h4>
+                  <h4 class="card-title">Új projekt</h4>
 				  
 					{!! Form::open(array('route' => 'projects.store','data-parsley-validate' => '', 'files'=>true)) !!}
 
@@ -40,7 +41,7 @@
 						</div>
 						
 						<div class="form-group">
-						{{ Form::label('tags', 'Tagek:') }}
+						{{ Form::label('tags', 'Címke:') }}
 						<select class="select-multi form-control" name="tags[]" multiple="multiple">
 							@foreach($tags as $tag)
 								<option value='{{ $tag->id }}'>{{ $tag->name }}</option>
@@ -78,5 +79,13 @@
     $('.select-multi').select2();
 </script>
 
+<script>
+	$("#title").keyup(function(){
+		var str = $(this).val();
+		var trims = $.trim(str);
+		var slug = trims.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
+		$("#slug").val(slug.toLowerCase())
+	})
+</script>
 
 @endsection

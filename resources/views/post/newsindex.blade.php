@@ -38,7 +38,7 @@
 										<a href="{{ route('post.newssingle', $n->slug) }}">{{ $n->title }}</a>
 									</div>
 									<div class="news_post_meta">
-										<span class="news_post_comments">{{$news->comments()->count()}} hozzászólás</span>
+										<span class="news_post_comments"></span>
 									</div>
 								</div>
 							</div>
@@ -62,7 +62,7 @@
 
 				<div class="col-lg-4">
 					<div class="sidebar">
-						<div class="button button_color_1 text-center trans_200"><a href="{{route('news.create')}}">Új hír</a></div>
+						<a href="{{route('news.create')}}" class="button button_color_1 text-center trans_200" role="button">Új hír</a>
 						<!-- Archives -->
 						<div class="sidebar_section">
 							<div class="sidebar_section_title">

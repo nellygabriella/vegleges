@@ -1,7 +1,7 @@
-<h3>You Have a New Contact Via the Contact Form</h3>
+<h3>Új üzenet</h3>
 
 <div>
-	{{ $bodyMessage }}
+	{!! $bodyMessage !!}
 </div>
 
-<p>Sent via {{ $email }}</p>
+<p>Küldve a {{ $email }} címről.</p>

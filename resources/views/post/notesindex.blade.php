@@ -14,8 +14,7 @@
 
     <div class="popular page_section">
 		<div class="container">
-			
-
+				<div class="button button_color_1 text-center trans_200"><a href="{{route('notes.create')}}">Jegyzet feltöltés</a></div>
 			<div class="row course_boxes">
 				
                 <!-- Popular Course Item -->
@@ -25,7 +24,7 @@
 						
 						<div class="card-body text-center">
 							<div class="card-title"><a href="{{ route('post.notessingle', $note->slug) }}">{{$note->title}}</a></div>
-                            <div class="card-text">{{ substr(strip_tags($note->body), 0, 80) }}{{ strlen(strip_tags($note->body)) > 80 ? '...' : "" }}</div>
+                            <div class="card-text">{{ substr(strip_tags($note->body), 0, 46) }}{{ strlen(strip_tags($note->body)) > 46 ? '' : "" }}</div>
                             <div class="course_author_name">{{$note->user->name}}</span></div>
                         </div>
 						
@@ -33,8 +32,9 @@
 						
 					</div>
 				</div>
-                @endforeach
-
+				@endforeach
+				
+				
 			</div>
 		</div>		
 	</div>

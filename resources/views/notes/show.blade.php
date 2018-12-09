@@ -53,13 +53,13 @@
 
                         <div class="row">
                             <div class="col-sm-6">
-                                {!!Html::linkRoute('notes.edit', 'Szerkeszt', array($note->id),array('class'=>'btn btn-secondary btn-fw'))!!}
+                                {!!Html::linkRoute('notes.edit', 'Módosít', array($note->id),array('class'=>'btn btn-warning btn-fw'))!!}
                             </div>
                             <div class="col-sm-6">
         
                                 {!! Form::open(['route'=>['notes.destroy',$note->id],'method' => 'DELETE']) !!}
         
-                                {!! Form::submit('Törlés',['class'=>'btn btn-info btn-fw']) !!}
+                                {!! Form::submit('Törlés',['class'=>'btn btn-danger btn-fw']) !!}
         
                                 {!! Form::close() !!}
         

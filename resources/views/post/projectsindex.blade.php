@@ -62,6 +62,7 @@
 
 				<div class="col-lg-4">
 					<div class="sidebar">
+							<a href="{{route('news.create')}}" class="button button_color_1 text-center trans_200" role="button">Új projekt</a>
 
 						<!-- Archives -->
 						<div class="sidebar_section">

@@ -8,7 +8,7 @@
 <div class="content-wrapper">
 		<div class="card">
 		  <div class="card-body">
-			<h4 class="card-title">Tagek</h4>
+			<h4 class="card-title">Címkék</h4>
 			<div class="row">
 			  <div class="col-8">
 				<table id="order-listing" class="table" cellspacing="0">
@@ -26,7 +26,7 @@
 						<td>{{ $tag->name }}</td>
 						<td>
 							{{ Form::open(['route' => ['tags.destroy', $tag->id], 'method' => 'DELETE']) }}
-								{{ Form::submit('Delete', ['class' => 'btn btn-danger btn-block', 'style' => 'margin-top:20px;']) }}
+								{{ Form::submit('Törlés', ['class' => 'btn btn-danger btn-block', 'style' => 'margin-top:20px;']) }}
 							{{ Form::close() }}
 						</td>
 					</tr>
@@ -38,11 +38,11 @@
 			  <div class="col-md-3">
 					<div class="well">
 						{!! Form::open(['route' => 'tags.store', 'method' => 'POST']) !!}
-							<h2>New Tag</h2>
-							{{ Form::label('name', 'Name:') }}
+							<h2>Új címke</h2>
+							{{ Form::label('name', 'Név:') }}
 							{{ Form::text('name', null, ['class' => 'form-control']) }}
 		
-							{{ Form::submit('Create New Tag', ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
+							{{ Form::submit('Mentés', ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
 						
 						{!! Form::close() !!}
 					</div>

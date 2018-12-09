@@ -26,7 +26,7 @@
 			<div class="col-md-10 grid-margin stretch-card">
 				<div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Új poszt szerkesztése</h4>
+                  <h4 class="card-title">Új bejegyzés</h4>
 				  
 					{!! Form::open(array('route' => 'jobs.store','data-parsley-validate' => '', 'files'=>true)) !!}
 
@@ -83,6 +83,7 @@
 <script type="text/javascript">
     $('.select-multi').select2();
 </script>
+
 
 
 @endsection

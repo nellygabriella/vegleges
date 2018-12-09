@@ -19,9 +19,6 @@ Route::group(['middlewire'=>['web']], function(){
 
     Route::get('hirek/{slug}', ['as'=>'post.newssingle', 'uses'=>'PostController@getNewsSingle']);
     Route::get('hirek', ['uses' => 'PostController@getNewsIndex', 'as' => 'post.newsindex']);
-    Route::post('/comment/store', 'CommentsController@store')->name('comment.add');
-    Route::delete('comment/{id}', ['uses' => 'CommentsController@destroy', 'as' => 'comment.destroy']);
-    Route::get('comment/{id}/delete', ['uses' => 'CommentsController@delete', 'as' => 'comments.delete']);
 
     Route::get('forum/{slug}', ['as'=>'post.forumsingle', 'uses'=>'PostController@getQuestionSingle']);
     Route::get('forum', ['uses' => 'PostController@getQuestionIndex', 'as' => 'post.forumindex']);

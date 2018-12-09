@@ -28,7 +28,7 @@
                       <tr>
                           <td>{{ $job->id }}</td>
                           <td>{{ $job->position }}</td>
-                          <td>{{ substr(strip_tags($job->body), 0, 50) }}{{ strlen(strip_tags($jib->body)) > 50 ? "..." : "" }}</td>
+                          <td>{{ substr(strip_tags($job->body), 0, 50) }}{{ strlen(strip_tags($job->body)) > 50 ? "..." : "" }}</td>
                           <td>{{ date('Y, M j', strtotime($job->created_at)) }}</td>
                           <td>{{ date('Y, M j', strtotime($job->updated_at)) }}</td>
                           <td>

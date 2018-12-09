@@ -14,10 +14,6 @@ use Purifier;
 class NotesController extends Controller
 {
     
-    public function __construct() {
-        $this->middleware('auth');
-    }
-    
     /**
      * Display a listing of the resource.
      *
@@ -77,7 +73,12 @@ class NotesController extends Controller
     public function show($id)
     {
         $note=Note::find($id);
-        return view('notes.show')->withNote($note);
+        
+        if(Auth::id() == $note->user_id){
+            return view('notes.show')->withNote($note);
+        }else{
+            return view('error.owner');
+        }
     }
 
     /**
@@ -89,7 +90,13 @@ class NotesController extends Controller
     public function edit($id)
     {
         $note = Note::find($id);
-        return view('notes.edit')->withNote($note);
+
+        if(Auth::id() == $note->user_id){
+            return view('notes.edit')->withNote($note);
+        }else{
+            return view('error.owner');
+        }
+
     }
 
     public function get_file($filename){
@@ -115,8 +122,12 @@ class NotesController extends Controller
         $note->title=$request->input('title');
         $note->slug=$request->input('slug');
         $note->body=Purifier::clean($request->input('body'));
-        $note->original_filename=$request->input('original_filename');
-
+        $file=$request->file('filefield');
+        $extension = $file->getClientOriginalExtension();
+        Storage::disk('local')->put($file->getFilename().'.'.$extension,  File::get($file));
+        $note->filemime = $file->getClientMimeType();
+        $note->original_filename = $file->getClientOriginalName();
+        $note->filename = $file->getFilename().'.'.$extension;
 
         $note->save();
 

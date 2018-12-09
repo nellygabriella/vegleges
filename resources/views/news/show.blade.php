@@ -18,7 +18,7 @@
                         <div id="summernoteExample">
                             <h4>{{ $news->title }}</h4>
                             <hr>
-                            <img src="{{asset('images/'.$news->image)}}" alt="Akép nem jeleníthető meg" width="100%"/>
+                            <img src="{{asset('images/'.$news->image)}}" alt=" " width="100%"/>
                             <hr>
                             <div class="text-justify">
                                 {!!$news->body!!}
@@ -33,40 +33,7 @@
                 </div>
                 </div>
             </div>
-            <div class="col-lg-8 grid-margin stretch-card">
-                <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">{{ $news->comments()->count() }} hozzászólás</h4>
             
-
-                    <table id="order-listing" class="table" cellspacing="0">
-                        <thead>
-                          <tr>
-                              
-                              
-                              <th>Tartalom</th>
-                              
-                              <th></th>
-                              <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-
-					<tbody>
-						@foreach ($news->comments as $comment)
-						<tr>
-							
-							<td>{{ $comment->comment }}</td>
-							<td>
-								<a href="{{ route('comments.delete', $comment->id) }}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash">Töröl</span></a>
-							</td>
-						</tr>
-						@endforeach
-					</tbody>
-				</table>
-            </div>
-                </div>
-            </div>
             <div class="col-lg-4 grid-margin stretch-card">
                 <div class="card" style="margin-right:50px;">
                     <div class="card-body">
@@ -90,13 +57,13 @@
 
                         <div class="row">
                             <div class="col-sm-6">
-                                {!!Html::linkRoute('news.edit', 'Szerkeszt', array($news->id),array('class'=>'btn btn-secondary btn-fw'))!!}
+                                {!!Html::linkRoute('news.edit', 'Módosít', array($news->id),array('class'=>'btn btn-warning btn-fw'))!!}
                             </div>
                             <div class="col-sm-6">
         
                                 {!! Form::open(['route'=>['news.destroy',$news->id],'method' => 'DELETE']) !!}
         
-                                {!! Form::submit('Törlés',['class'=>'btn btn-info btn-fw']) !!}
+                                {!! Form::submit('Törlés',['class'=>'btn btn-danger btn-fw']) !!}
         
                                 {!! Form::close() !!}
         

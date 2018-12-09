@@ -38,7 +38,7 @@
 									<h1>{{ $news->title }}</h1>
 								</div>
 								<div class="news_post_meta">
-									<span class="news_post_comments"><a href="#">3 Comments</a></span>
+									<span class="news_post_comments"><a href="#">{{$news->comments()->count()}} hozzászólás</a></span>
 								</div>
 							</div>
 						</div>
@@ -49,48 +49,7 @@
 
 				</div>
 				
-				<!-- Comments -->
-				<div class="news_post_comments">
-					<div class="comments_title">Hozzászólások</div>
-					<ul class="comments_list">
-						
-						<!-- Comment -->
-						@foreach($news->comments as $comment)
-						<li class="comment">
-							<div class="comment_container d-flex flex-row">
-								
-								<div class="comment_content">
-									<div class="comment_meta">
-										<span class="comment_name">{{ $comment->user->name }}</span>
-										<span class="comment_separator">|</span>
-										<span class="comment_date">{{ $comment->created_at}}</span>
-										<span class="comment_separator">|</span>
-										<span class="comment_reply_link"><a href="#">Reply</a></span>
-									</div>
-									<p class="comment_text">{{$comment->comment}}</p>
-								</div>
-							</div>
-						</li>
-						@endforeach
-
-					</ul>
-
-				</div>
-
-				<!-- Leave Comment -->
-
-				<div class="leave_comment">
-					<div class="leave_comment_title">Írj hozzászólást</div>
-
-					<div class="leave_comment_form_container">
-						<form method="post" action="{{ route('comment.add') }}">
-							@csrf
-							<textarea id="comment_form_message" class="text_field contact_form_message" name="comment_body" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
-							<input type="hidden" name="post_id" value="{{ $news->id }}" />
-							<input  type="submit" class="btn btn-warning comment_send_btn trans_200" value="Küld"/>
-						</form>
-					</div>
-				</div>
+				
 
 			</div>
 
@@ -99,7 +58,7 @@
 			<div class="col-lg-4">
 				<div class="sidebar">
 
-					<div class="button button_color_1 text-center trans_200"><a href="{{route('news.create')}}">Új hír</a></div>
+					<a href="{{route('news.create')}}" class="button button_color_1 text-center trans_200" role="button">Új hír</a>
 					<!-- Archives -->
 					<div class="sidebar_section">
 						<div class="sidebar_section_title">

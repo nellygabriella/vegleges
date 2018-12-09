@@ -72,7 +72,7 @@ class NewsController extends Controller
             $image=$request->file('featured_image');
             $filename = time().'.'.$image->getClientOriginalExtension();
             $location = public_path('images/'.$filename);
-            Image::make($image)->resize(800,400)->save($location);
+            Image::make($image)->resize(730,384)->save($location);
 
             $news->image=$filename;
         }
@@ -94,8 +94,15 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        $news=News::find($id);
-        return view('news.show')->withNews($news);
+       
+        $news= News::find($id);
+        if(Auth::id() == $news->user_id){
+            return view('news.show')->withNews($news);
+        }else{
+            return view('error.owner');
+        }
+        
+        
     }
 
     /**
@@ -113,7 +120,12 @@ class NewsController extends Controller
         foreach ($tags as $tag){
             $tags2[$tag->id]= $tag->name;
         }
-        return view('news.edit')->withNews($news)->withTags($tags2);
+
+        if(Auth::id() == $news->user_id){
+            return view('news.edit')->withNews($news)->withTags($tags2);
+        }else{
+            return view('error.owner');
+        }
     }
 
     /**
@@ -136,7 +148,7 @@ class NewsController extends Controller
         
             $this -> validate($request, array(
                 'title'=>'required|max:255',
-                'slug'=>'required|alpha_dash|min:5|max:255|unique:news,slug'.$id,
+                'slug'=>'required|alpha_dash|min:5|max:255|unique:news,slug',
                 'body'=>'required'
             ));
         }
@@ -152,7 +164,7 @@ class NewsController extends Controller
             $image=$request->file('featured_image');
             $filename = time().'.'.$image->getClientOriginalExtension();
             $location = public_path('images/'.$filename);
-            Image::make($image)->resize(800,400)->save($location);
+            Image::make($image)->resize(730,384)->save($location);
             $oldfilename =$news->image;
 
             $news->image=$filename;
@@ -170,7 +182,7 @@ class NewsController extends Controller
             $news->tags()->sync(array());
         }
 
-        Session::flash('success','A post sikeresen mentve.');
+        Session::flash('success','A bejegyzés sikeresen módosítva.');
 
         return redirect()->route('news.show', $news->id);
     }
@@ -189,7 +201,7 @@ class NewsController extends Controller
 
         $news -> delete();
 
-        Session::flash('succes','A post sikeresen törölve.');
+        Session::flash('succes','A bejegyzés sikeresen törölve.');
         return redirect()->route('news.index');
     }
 }
