@@ -57,7 +57,7 @@
             "php artisan clear-compiled",
             "php artisan optimize",
             "chmod -R 775 public/"
-		]
+        ]
     },
     "config": {
         "preferred-install": "dist",
