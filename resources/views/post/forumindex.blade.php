@@ -32,7 +32,7 @@
 								</div>
 								<div class="news_post_title_container">
 									<div class="news_post_title">
-										<a href="{{ route('post.newssingle', $question->slug) }}">{{ $question->question }}</a>
+										<a href="{{ route('post.forumsingle', $question->slug) }}">{{ $question->question }}</a>
 									</div>
 									<div class="news_post_meta">
 									

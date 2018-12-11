@@ -38,7 +38,7 @@
 									</div>
 									<div class="news_post_meta">
 									
-										<span class="news_post_comments"><a href="#">3 Comments</a></span>
+										<span class="news_post_comments"><a href="#"></a></span>
 									</div>
 								</div>
 							</div>
@@ -62,7 +62,7 @@
 
 				<div class="col-lg-4">
 					<div class="sidebar">
-							<a href="{{route('news.create')}}" class="button button_color_1 text-center trans_200" role="button">Új projekt</a>
+							<a href="{{route('projects.create')}}" class="button button_color_1 text-center trans_200" role="button">Új projekt</a>
 
 						<!-- Archives -->
 						<div class="sidebar_section">

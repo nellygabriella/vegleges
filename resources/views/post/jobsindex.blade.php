@@ -44,7 +44,7 @@
 								<p>{{ substr(strip_tags($job->body), 0, 250) }}{{ strlen(strip_tags($job->body)) > 250 ? '...' : "" }}</p>
 							</div>
 							<div class="news_post_button text-center trans_200">
-								<a href="{{ route('post.projectsingle', $job->slug) }}">Tovább</a>
+								<a href="{{ route('post.jobsingle', $job->slug) }}">Tovább</a>
 							</div>
                         </div>
                         @endforeach

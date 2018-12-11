@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('content')
 <div class="container-scroller">
     <div class="container-fluid page-body-wrapper">
       <div class="row">
@@ -31,3 +32,4 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+@endsection

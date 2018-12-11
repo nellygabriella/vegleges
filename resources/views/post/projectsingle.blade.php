@@ -36,7 +36,7 @@
 									<h1>{{ $project->title }}</h1>
 								</div>
 								<div class="news_post_meta">
-									<span class="news_post_comments"><a href="#">3 Comments</a></span>
+									<span class="news_post_comments"><a href="#"></a></span>
 								</div>
 							</div>
 						</div>
